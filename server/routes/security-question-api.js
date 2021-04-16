@@ -134,7 +134,36 @@ router.post('/', async(req, res) => {
 /**
  * UpdateSecurityQuestion API
 */
-
+router.post('/:id', async(req, res) =>{
+  try{
+    SecurityQuestion.findOne({'_id': req.params.id}, function(err, securityQuestion){
+  
+      if (err)
+      {
+        console.log(err);
+        const UpdateSecurityQuestionMongodbErrorResponse = new ErrorResponse(500, 'Internal Server Error', err);
+        res.status(500).send(UpdateSecurityQuestionMongodbErrorResponse.toObject());
+      }
+      else
+      {
+  
+        securityQuestion.set({
+          text: req.body.text,
+          answer: req.body.answer
+        })
+        console.log(securityQuestion);
+        const UpdateSecurityQuestionResponse = new BaseResponse(200, 'Query Successful', securityQuestion);
+        res.json(UpdateSecurityQuestionResponse.toObject());
+      }
+    })
+  
+  }catch(e){
+    console.log(e);
+    const updateSecurityQuestionCatchErrorResponse = new ErrorResponse(500, 'Internal Server Error', e.message);
+    res.status(500).send(updateSecurityQuestionCatchErrorResponse.toObject());
+  }
+  
+  })
 /**
  * DeleteSecurityQuestion API
 */
