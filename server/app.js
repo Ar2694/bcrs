@@ -21,8 +21,8 @@ const mongoose = require('mongoose');
  * Routes
  */
 const SecurityQuestionAPI = require('./routes/security-question-api');
-const UserAPI = require('./routes/user-api');
-const SessionAPI = require('./routes/session-api');
+//const UserAPI = require('./routes/user-api');
+//const SessionAPI = require('./routes/session-api');
 
 
 /**
@@ -41,7 +41,7 @@ app.use('/', express.static(path.join(__dirname, '../dist/bcrs')));
 const port = process.env.PORT || 3000; // server port
 
 //mongo db connection with username and password to access database
-const conn = 'mongodb+srv://superadmin:s3cret@cluster0-lujih.mongodb.net/bcrs?retryWrites=true&w=majority';
+const conn = 'mongodb+srv://bcrsAdmin:bcrsPassword@buwebdev-cluster-1.z53kv.mongodb.net/bcrs?retryWrites=true&w=majority';
 
 /**
  * Database connection
@@ -59,7 +59,7 @@ mongoose.connect(conn, {
 /**
  * APIs
  */
-app.use('api/security-question', SecurityQuestionAPI);
+app.use('/api/security-questions', SecurityQuestionAPI);
 //app.use('/api/users', UserAPI);
 //app.use('/api/session', SessionAPI);
 
