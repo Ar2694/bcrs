@@ -150,10 +150,19 @@ router.post('/:id', async(req, res) =>{
         securityQuestion.set({
           text: req.body.text,
           answer: req.body.answer
-        })
-        console.log(securityQuestion);
-        const UpdateSecurityQuestionResponse = new BaseResponse(200, 'Query Successful', securityQuestion);
-        res.json(UpdateSecurityQuestionResponse.toObject());
+        });
+        securityQuestion.save(function (err, UpdateSecurityQuestion){
+          if(err){
+            console.log(err);
+            const saveSecurityQuestionErrorResponse = new ErrorResponse(500, 'Internal Server Error', err);
+            res.status(500).send(saveSecurityQuestionErrorResponse.toObject());
+          }else{
+            console.log(securityQuestion);
+            const UpdateSecurityQuestionResponse = new BaseResponse(200, 'Query Successful', UpdateSecurityQuestion);
+            res.json(UpdateSecurityQuestionResponse.toObject());
+          }
+        });
+  
       }
     })
   
