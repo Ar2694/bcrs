@@ -21,12 +21,16 @@ const RoleSchema = require('../schemas/user-role')
 const router = express.Router();
 const saltRounds = 10; //default salt rounds for hashing algorithm
 
+// each API will go through this route -> http://localhost:3000/api/users
+
 /**
  * FindAll API
+ * http://localhost:3000/api/users
  */
 
 /**
  * FindById API
+ * http://localhost:3000/api/users/:id
  */
 router.get('/:id', async(req, res) => {
   try
@@ -56,16 +60,18 @@ router.get('/:id', async(req, res) => {
 
 /**
  * UpdateUser API
+ * http://localhost:3000/api/users/:id
  */
 
 /**
  * DeleteUser API
+ * http://localhost:3000/api/users/:id
  */
 router.delete('/:id', async(req, res) => {
   try
   {
     //this will help find the employee record
-    User.findOne({'id': req.params.id}, function (err, user) {
+    User.findOne({'_id': req.params.id}, function (err, user) {
 
       //if...else function for error handling
       if (err)
@@ -111,10 +117,12 @@ router.delete('/:id', async(req, res) => {
 
 /**
  * FindSelectedSecurityQuestions API
+ * http://localhost:3000/api/users/:username/security-questions
  */
 
 /**
  * FindUserRole API
+ * http://localhost:3000/api/users/:username/role
  */
 
 module.exports = router;
