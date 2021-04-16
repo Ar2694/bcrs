@@ -51,14 +51,85 @@ router.get('/', async(req, res) => {
   catch (e)
   {
     console.log(e);
-    const FindAllCatchErrorResponse = new ErrorResponse(500, 'Internal Server Error', e.message);
-    res.status(500).send(FindAllCatchErrorResponse.toObject());
+    const findAllCatchErrorResponse = new ErrorResponse(500, 'Internal Server Error', e.message);
+    res.status(500).send(findAllCatchErrorResponse.toObject());
   }
 });
+
+// ============================================================================================================================
 
 /**
  * FindById API
 */
+router.get('/:id', async(req, res) => {
+  try
+  {
+    // Searches the database for the correct API
+
+    SecurityQuestion.findOne({'_id': req.params.id}, function(err, securityQuestion){
+
+      if (err)
+      {
+        console.log(err);
+        const findByIdMongodbErrorResponse = new ErrorResponse(500, 'Internal Server Error', err);
+        res.status(500).send(findByIdMongodbErrorResponse.toObject());
+      }
+      else
+      {
+        console.log(securityQuestion);
+        const findByIdResponse = new BaseResponse(200, 'Query Successful', securityQuestion);
+        res.json(findByIdResponse.toObject());
+      }
+    })
+  }
+  catch (e)
+  {
+    console.log(e);
+    const findByIdCatchErrorResponse = new ErrorResponse(500, 'Internal Server Error', e.message);
+    res.status(500).send(findByIdCatchErrorResponse.toObject());
+  }
+});
+
+// ============================================================================================================================
+
+/**
+ *  CreateSecurityQuestion API
+ */
+router.post('/', async(req, res) => {
+  try
+  {
+    // allows for the question to be created and posted on the body
+
+    let newSecurityQuestion = {
+      text: req.body.text
+    };
+
+    SecurityQuestion.create(newSecurityQuestion, function(err, securityQuestion) {
+
+
+      if (err)
+      {
+        console.log(err);
+        const createSecurityQuestionMongodbErrorResponse = new ErrorResponse(500, 'Internal Server Error', err);
+        res.status(500).send(createSecurityQuestionMongodbErrorResponse.toObject());
+      }
+      else
+      {
+        console.log(securityQuestion);
+        const createSecurityQuestionResponse = new BaseResponse(200, 'Query Successful', securityQuestion);
+        res.json(createSecurityQuestionResponse.toObject());
+      }
+    })
+  }
+  catch (e)
+  {
+    console.log(e);
+    const createSecurityQuestionCatchErrorResponse = new ErrorResponse(500, 'Internal Server Error', e.message);
+    res.status(500).send(createSecurityQuestionCatchErrorResponse.toObject());
+  }
+});
+
+// ============================================================================================================================
 
 /**
  * UpdateSecurityQuestion API
