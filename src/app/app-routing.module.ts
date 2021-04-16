@@ -15,8 +15,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './shared/auth.guard';
 import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
-import { pathToFileURL } from 'node:url';
-import { sign } from 'crypto';
 import { SigninComponent } from './pages/signin/signin.component';
 
 // These are the paths added to the routes array
