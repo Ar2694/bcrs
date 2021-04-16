@@ -3,7 +3,7 @@
 ; Title:  user-api.js
 ; Author: Professor Krasso
 ; Date:   15 April 2021
-; Modified by: Karina Alvarez
+; Modified by: Karina Alvarez, Douglas Jenkins, Arlix Sorto
 ; Description: User APIs
 ;===========================================
 */
@@ -38,6 +38,7 @@ router.get('/:id', async(req, res) => {
         const findByIdMongodbErrorResponse = new ErrorResponse(500, 'MongoDB native error', err);
         res.status(500).send(findByIdMongodbErrorResponse.toObject());
       }
+      //If no error message
       else {
         console.log(user);
         const findByIdResponse = new BaseResponse(200, 'Query Successful', user);
@@ -65,6 +66,7 @@ router.delete('/:id', async(req, res) => {
   {
     //this will help find the employee record
     User.findOne({'id': req.params.id}, function (err, user) {
+
       //if...else function for error handling
       if (err)
       {
@@ -85,7 +87,7 @@ router.delete('/:id', async(req, res) => {
           if (err) {
             console.log (err);
 
-            const savedUserMongodbErrorResponse = new ErrorResponse('500', 'MongoDB Error', err);
+            const savedUserMongodbErrorResponse = new ErrorResponse('500', 'Internal Server Error', err);
             res.status(500).send(savedUserMongodbErrorResponse.toObject());
           }
           else
