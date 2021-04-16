@@ -3,8 +3,8 @@
 ; Title:  app.js
 ; Author: Professor Krasso
 ; Date:   15 April 2021
-; Modified by: Karina Alvarez, Douglas Jenkins, Arlix Sorto
-; Description: application file
+; Modified by: Douglas Jenkins
+; Description: user js input fields
 ;===========================================
 */
 
