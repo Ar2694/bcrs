@@ -1,6 +1,6 @@
 /*
 ============================================
-; Title: app.component.ts
+; Title: security-question.service.ts
 ; Author: Professor Krasso
 ; Date:   16 April 2021
 ; Modified by:
@@ -9,13 +9,12 @@
 */
 
 //These are files being imported from external files
-import { Component } from '@angular/core';
+import { Injectable } from '@angular/core';
 
-@Component({
-  selector: 'app-root',
-  template: `<router-outlet></router-outlet>`,
-  styles: [``]
+@Injectable({
+  providedIn: 'root'
 })
-export class AppComponent {
+export class SecurityQuestionService {
 
+  constructor() { }
 }

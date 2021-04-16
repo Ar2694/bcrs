@@ -1,3 +1,14 @@
+/*
+============================================
+; Title: app.module.ts
+; Author: Professor Krasso
+; Date:   16 April 2021
+; Modified by: Karina Alvarez, Douglas Jenkins, Arlix Sorto
+; Description: App module files being imported
+;===========================================
+*/
+
+//These are files being imported from external files
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
