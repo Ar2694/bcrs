@@ -215,4 +215,4 @@ try{
  * FindSecurityQuestionByIds
 */
 
-module.exports.router;
+module.exports = router;
