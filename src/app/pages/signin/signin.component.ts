@@ -14,6 +14,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-signin',
@@ -25,7 +26,8 @@ export class SigninComponent implements OnInit {
   form: FormGroup;
   errorMessage: string;
 
-  constructor(private router: Router, private cookieService: CookieService, private fb: FormBuilder, private http: HttpClient) { }
+  constructor(private router: Router, private cookieService: CookieService, private fb: FormBuilder,
+              private http: HttpClient) { }
 
 
   /**
@@ -39,7 +41,8 @@ export class SigninComponent implements OnInit {
   }
 
   /**
-   * Sign-in button function
+   * siginin function needed to help the employee login with a valid username and password
+   * If an invalid username is entered, the else..if will handle this by showing a warning or error message.
    */
   signin() {
     const userName = this.form.controls.userName.value;
@@ -51,7 +54,8 @@ export class SigninComponent implements OnInit {
       /**
        * This will authenticate user to grant them access to homepage
        */
-      if (res['data'].userName) {
+      if (res['data'].userName)
+      {
         this.cookieService.set('sessionuser', res['data'].userName, 1);
         this.router.navigate(['/']);
       }

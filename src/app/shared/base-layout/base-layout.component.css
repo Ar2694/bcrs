@@ -3,38 +3,42 @@
     font-size: 24px;
     font-weight: lighter;;
   }
-  
+
   .navbar-container {
     padding: 5px;
   }
-  
+
+  .navigation-bar {
+    padding: 50px;
+  }
+
   .navbar-link {
     font-size: 24px;
     font-weight: lighter;
   }
-  
+
   .main-content {
     padding-left: 30px;
   }
-  
+
   .footer {
     bottom: 0;
     position: absolute;
     width: 100%;
   }
-  
+
   .footer-content {
     font-size: 16px;
     font-weight: lighter;
     padding-left: 100px;
     letter-spacing: 3px;
   }
-  
+
   .bu-link {
     text-decoration: none;
+    color: white;
   }
-  
+
   .bu-link:hover {
     text-decoration: underline;
   }
-  

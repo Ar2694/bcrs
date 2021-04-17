@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-base-layout',
@@ -8,10 +10,17 @@ import { Component, OnInit } from '@angular/core';
 export class BaseLayoutComponent implements OnInit {
 
   year: number = Date.now();
-  
-  constructor() { }
+
+  constructor(private cookieService: CookieService, private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  //Once user logs into the system, the signOut() function will allow them to sign out of the site
+  //user will be redirected to the sign-in page
+  signOut() {
+    this.cookieService.deleteAll();
+    this.router.navigate(['/session/login']);
   }
 
 }

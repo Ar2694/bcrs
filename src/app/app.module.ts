@@ -64,7 +64,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     FormsModule,
     ReactiveFormsModule,
     MatCardModule,
-    MatFormFieldModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]
