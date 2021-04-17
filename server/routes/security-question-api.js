@@ -146,7 +146,6 @@ router.post('/:id', async(req, res) =>{
       }
       else
       {
-  
         securityQuestion.set({
           text: req.body.text,
           answer: req.body.answer
@@ -176,7 +175,44 @@ router.post('/:id', async(req, res) =>{
 /**
  * DeleteSecurityQuestion API
 */
+router.delete("/:id", async (req, res) => {
+try{
 
+  SecurityQuestion.findOne({'_id': req.params.id}, function(err, securityQuestion){
+    if(err){
+      console.log(err);
+      const deleteSecurityQuestionDbErrorResponse =  new ErrorResponse(500, 'Internal Server Error', err);
+      res.status(500).send(deleteSecurityQuestionDbErrorResponse.toObject());
+    }else{
+      console.log(securityQuestion);
+
+      securityQuestion.set({
+        isDisabled: true
+      });
+
+       securityQuestion.save(function(err, savedSecurityQuestion){
+         if(err){
+          console.log(err);
+          const savedSecurityQuestionDbErrorResponse = new ErrorResponse(500, 'Internal Server Error', e.message);
+          res.status(500).send(savedSecurityQuestionDbErrorResponse.toObject());
+  
+         }else{
+          console.log(savedSecurityQuestion);
+          const deleteSecurityQuestionResponse = new BaseResponse(200, 'Query Successful', UpdateSecurityQuestion);
+           res.json(deleteSecurityQuestionResponse.toObject());
+         }
+       })
+    }
+
+  });
+}catch(e){
+  console.log(e);
+  const deleteSecurityQuestionCatchErrorResponse = new ErrorResponse(500, 'Internal Server Error', e.message);
+  res.status(500).send(deleteSecurityQuestionCatchErrorResponse.toObject());
+}
+});
 /**
  * FindSecurityQuestionByIds
 */
+
+module.exports.router;
