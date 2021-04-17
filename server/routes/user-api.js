@@ -28,6 +28,35 @@ const saltRounds = 10; //default salt rounds for hashing algorithm
  * http://localhost:3000/api/users
  */
 
+router.get('/', async (req, res) => {
+  try {
+    //Retrieve all users data.
+    User.find({}).where('isDisabled').equals(false).exec(function(err, users){
+      
+      //Check for errors
+      if(err){
+        console.log(err);
+        const findAllMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
+        res.status(500).send(findAllMongodbErrorResponse.toObject());
+      }
+      //If no error, send the users object and response*/ 
+      else{
+        console.log(users);
+        const findAllUsersResponse = new BaseResponse(200, 'Query successful', users);
+        res.json(findAllUsersResponse.toObject());
+      }
+    });
+  } 
+  
+  catch (error) {
+    console.log(error);
+    const findAllCatchErrorResponse = new ErrorResponse (500, 'Internal Server Error', error);
+    res.status(500).send(findAllCatchErrorResponse.toObject());
+  }
+
+});
+
+
 /**
  * FindById API
  * http://localhost:3000/api/users/:id
