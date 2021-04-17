@@ -88,6 +88,54 @@ router.get('/:id', async(req, res) => {
 });
 
 /**
+ * CreateUser API
+ * http://localhost:3000/api/users
+ */
+router.post('/', async(res, req) => {
+    try {
+      //convert user password into a hash password.
+      let hashPassword = bcrypt.hashSync(req.body.password, saltRounds);
+
+      
+      standardRole = {
+        role: 'standard'
+      }
+
+      let newUser = {
+        userName: req.body.username,
+        password: hashPassword,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        phoneNumber: req.body.phoneNumber,
+        address: req.body.address,
+        email: req.body.email,
+        role: standardRole
+      }
+
+      //Create a new user
+      User.create(newUser, function(err, user){
+        
+        //Check for any errors
+        if(err){
+          console.log(err);
+          const createUserMongodbErrorResponse  = new ErrorResponse (500, 'Internal Server Error', err);
+          res.status(500).send(createUserMongodbErrorResponse.toObject());
+        }
+        //Send the user object and response*/ 
+        else{
+          console.log(user);
+          const createUserResponse = new BaseResponse(200, 'Query Successful', user);
+          res.json(createUserResponse.toObject());
+        }
+      })
+    } catch (error) {
+      console.log(error);
+      const createUserCatchErrorResponse = new ErrorResponse(500, 'Internal Server Error', error);
+      res.status(500).send(createUserCatchErrorResponse.toObject());
+    }
+});
+
+/**
  * UpdateUser API
  * http://localhost:3000/api/users/:id
  */
