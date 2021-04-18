@@ -23,7 +23,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class SigninComponent implements OnInit {
 
-  form: FormGroup;
+  signinForm: FormGroup;
   errorMessage: string;
 
   constructor(private router: Router, private cookieService: CookieService, private fb: FormBuilder,
@@ -34,29 +34,29 @@ export class SigninComponent implements OnInit {
    * Sign-in form with username and password specifying the requirements to login to the homepage
    */
   ngOnInit(): void {
-    this.form = this.fb.group({
+    this.signinForm = this.fb.group({
       userName: [null, Validators.compose([Validators.required])],
-      password: [null, Validators.compose([Validators.required, Validators.pattern('^[a-z A-Z + $')])]
+      password: [null, Validators.compose([Validators.required, Validators.pattern('^[a-z A-Z]*$')])]
     })
   }
 
   /**
-   * siginin function needed to help the employee login with a valid username and password
+   * signin function needed to help the employee login with a valid username and password
    * If an invalid username is entered, the else..if will handle this by showing a warning or error message.
    */
   signin() {
-    const userName = this.form.controls.userName.value;
-    const password = this.form.controls.password.value;
+    const username = this.signinForm.controls.username.value;
+    const password = this.signinForm.controls.password.value;
 
-    this.http.post('/api/session/signin', { userName, password }).subscribe(res => {
+    this.http.post('/api/session/signin', { username, password }).subscribe(res => {
       console.log(res['data']);
 
       /**
        * This will authenticate user to grant them access to homepage
        */
-      if (res['data'].userName)
+      if (res['data'].username)
       {
-        this.cookieService.set('sessionuser', res['data'].userName, 1);
+        this.cookieService.set('sessionuser', res['data'].username, 1);
         this.router.navigate(['/']);
       }
     }, err => {

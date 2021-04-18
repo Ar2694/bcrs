@@ -96,13 +96,13 @@ router.post('/', async(res, req) => {
       //convert user password into a hash password.
       let hashPassword = bcrypt.hashSync(req.body.password, saltRounds);
 
-      
+
       standardRole = {
         role: 'standard'
       }
 
       let newUser = {
-        userName: req.body.username,
+        username: req.body.username,
         password: hashPassword,
         firstName: req.body.firstName,
         lastName: req.body.lastName,
@@ -114,14 +114,14 @@ router.post('/', async(res, req) => {
 
       //Create a new user
       User.create(newUser, function(err, user){
-        
+
         //Check for any errors
         if(err){
           console.log(err);
           const createUserMongodbErrorResponse  = new ErrorResponse (500, 'Internal Server Error', err);
           res.status(500).send(createUserMongodbErrorResponse.toObject());
         }
-        //Send the user object and response*/ 
+        //Send the user object and response*/
         else{
           console.log(user);
           const createUserResponse = new BaseResponse(200, 'Query Successful', user);

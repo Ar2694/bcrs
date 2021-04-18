@@ -25,7 +25,7 @@ const router = express.Router();
 router.post('/signin', async(req, res) => {
   try
   {
-    User.findOne({'userName': req.body.userName}, function(err, user) {
+    User.findOne({'username': req.body.username}, function(err, user) {
       if (err)
       {
         console.log(err);
@@ -52,7 +52,7 @@ router.post('/signin', async(req, res) => {
           }
           else
           {
-            console.log(`Invalid password for username: ${user.userName}`);
+            console.log(`Invalid password for username: ${user.username}`);
 
             const invalidPasswordResponse = new BaseResponse(401, 'Invalid username and/or password. Please try again.', null);
             res.status(401).send(invalidPasswordResponse.toObject());
@@ -61,7 +61,7 @@ router.post('/signin', async(req, res) => {
         }
         else
         {
-          console.log(`Username: ${req.body.userName} is invalid`)
+          console.log(`username: ${req.body.username} is invalid`)
 
           const invalidUserNameResponse = new BaseResponse(401, `Invalid username and/or password. Please try again.`, null);
           res.status(401).setDefaultEncoding(invalidUserNameResponse.toObject());

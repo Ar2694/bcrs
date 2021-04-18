@@ -12,6 +12,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 //components created using ng g c <fileName>
 import { AppComponent } from './app.component';
@@ -25,9 +26,9 @@ import { SigninComponent } from './pages/signin/signin.component';
 import { UserCreateComponent } from './pages/user-create/user-create.component';
 import { UserDetailsComponent } from './pages/user-details/user-details.component';
 import { UserListComponent } from './pages/user-list/user-list.component';
+import { DeleteRecordDialogComponent } from './shared/delete-record-dialog/delete-record-dialog.component'
 
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -35,8 +36,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -50,7 +53,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     SigninComponent,
     UserCreateComponent,
     UserDetailsComponent,
-    UserListComponent
+    UserListComponent,
+    DeleteRecordDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +68,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     FormsModule,
     ReactiveFormsModule,
     MatCardModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatDialogModule,
+    MatInputModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

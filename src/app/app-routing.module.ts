@@ -16,6 +16,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './shared/auth.guard';
 import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
 import { SigninComponent } from './pages/signin/signin.component';
+import { UserListComponent } from './pages/user-list/user-list.component';
 
 // These are the paths added to the routes array
 // Each of these path will take you to the designated component
@@ -27,6 +28,10 @@ const routes: Routes = [
       {
         path: '',
         component: HomeComponent
+      },
+      {
+        path: 'users',
+        component: UserListComponent
       }
     ],
     canActivate: [AuthGuard]

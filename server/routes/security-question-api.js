@@ -137,7 +137,7 @@ router.post('/', async(req, res) => {
 router.post('/:id', async(req, res) =>{
   try{
     SecurityQuestion.findOne({'_id': req.params.id}, function(err, securityQuestion){
-  
+
       if (err)
       {
         console.log(err);
@@ -161,16 +161,16 @@ router.post('/:id', async(req, res) =>{
             res.json(UpdateSecurityQuestionResponse.toObject());
           }
         });
-  
+
       }
     })
-  
+
   }catch(e){
     console.log(e);
     const updateSecurityQuestionCatchErrorResponse = new ErrorResponse(500, 'Internal Server Error', e.message);
     res.status(500).send(updateSecurityQuestionCatchErrorResponse.toObject());
   }
-  
+
   })
 /**
  * DeleteSecurityQuestion API
@@ -195,7 +195,7 @@ try{
           console.log(err);
           const savedSecurityQuestionDbErrorResponse = new ErrorResponse(500, 'Internal Server Error', e.message);
           res.status(500).send(savedSecurityQuestionDbErrorResponse.toObject());
-  
+
          }else{
           console.log(savedSecurityQuestion);
           const deleteSecurityQuestionResponse = new BaseResponse(200, 'Query Successful', UpdateSecurityQuestion);

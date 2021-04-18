@@ -1,7 +1,10 @@
+/*
+* Styling for navigation bar
+*/
 .logo {
     margin-left: 75px;
     font-size: 24px;
-    font-weight: lighter;;
+    font-weight: lighter;
   }
 
   .navbar-container {
@@ -21,6 +24,9 @@
     padding-left: 30px;
   }
 
+  /*
+  * Styling for page's footer
+  */
   .footer {
     bottom: 0;
     position: absolute;
@@ -41,4 +47,59 @@
 
   .bu-link:hover {
     text-decoration: underline;
+  }
+
+  /*
+  * Styling for dropdown menu
+  */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    right: 0;
+  }
+
+  .dropdown-content button {
+    color: black;
+    text-decoration: none;
+    font-weight: lighter;
+    font-size: small;
+  }
+
+  .dropdown-content button:hover {
+    background-color: #ddd;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  .icon:hover {
+    cursor: pointer;
+  }
+
+  /*
+    Making navbar responsive in smaller screens
+  */
+  @media only screen and (max-width: 700px) {
+    .logo {
+      margin-left: 10px;
+      font-size: 20px;
+    }
+    .navigation-bar {
+      padding-top: 50px;
+      padding-bottom: 20px;
+    }
+
+    .navbar-link {
+      font-size: 16px;
+    }
   }

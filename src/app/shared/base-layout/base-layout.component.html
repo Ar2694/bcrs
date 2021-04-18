@@ -10,8 +10,20 @@
 
         <button class="navbar-link" routerLink="/" mat-button>Home</button>
         <button class="navbar-link" mat-button routerLink="/about">About Us</button>
-        <button class="navbar-link" mat-button routerLink="/about">About Us</button>
-        <button class="navbar-link" mat-button (click)='signOut()'>Sign Out</button>
+        <button class="navbar-link" mat-button routerLink="/about">Contact Us</button>
+      </div>
+
+      <div fxFlex fxLayoutAlign="end center">
+        <button class="navbar-link" mat-button (click)="signOut()" style="font-size: 70%;">Sign Out</button>
+
+        <div class="dropdown">
+            <mat-icon class="icon">person_outline</mat-icon>
+          <div class="dropdown-content">
+            <button class="navbar-link" mat-button routerLink='/users'>Configure Users</button><br>
+            <button class="navbar-link" mat-button routerLink='/security-questions'>Configure Security Questions</button><br>
+            <button class="navbar-link" mat-button routerLink='/roles'>Configure Roles</button>
+          </div>
+        </div>
       </div>
 
     </mat-toolbar>

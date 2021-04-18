@@ -23,18 +23,20 @@
         <!-- if an error occurs the bellow message will be displayed-->
         <small style="color: #df546a;" *ngIf='errorMessage'> {{ errorMessage }}<br></small>
         <mat-card class="mat-elevation-z0">
-          <form [formGroup]='form' (ngSubmit)='signin(); form.reset()' #loginForm='ngForm'>
+          <form [formGroup]='signinForm' (ngSubmit)='signin(); signinForm.reset()'>
 
             <!-- Username and password input fields -->
             <mat-card-content fxLayout='column'>
-              <mat-form-field class="input-fields">
-                <input type="text" matInput fxFlex [formControl]="form.controls['userName']" placeholder='Username' />
-                <input type="password" matInput fxFlex [formControl]="form.controls['password']" placeholder='Password' />
+              <mat-form-field >
+                <input type="text" matInput fxFlex [formControl]="signinForm.controls['username']" placeholder='Username' />
+              </mat-form-field>
+              <mat-form-field >
+                <input type="password" matInput fxFlex [formControl]="signinForm.controls['password']" placeholder='Password' />
               </mat-form-field>
             </mat-card-content>
 
             <mat-card-actions>
-              <button type="signin" fxFlex mat-raised-button color='accent' [disabled]='!form.valid'>Sign-In</button>
+              <button type="signin" fxFlex mat-raised-button color='accent'>Sign-In</button>
             </mat-card-actions>
 
 

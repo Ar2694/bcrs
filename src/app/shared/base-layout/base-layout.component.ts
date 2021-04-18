@@ -20,7 +20,7 @@ export class BaseLayoutComponent implements OnInit {
   //user will be redirected to the sign-in page
   signOut() {
     this.cookieService.deleteAll();
-    this.router.navigate(['/session/login']);
+    this.router.navigate(['/session/signin']);
   }
 
 }
