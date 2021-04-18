@@ -93,26 +93,17 @@ router.get('/:id', async(req, res) => {
  */
 router.post('/', async(res, req) => {
     try {
-    
+
       //convert user password into a hash password.
       let hashedPassword = bcrypt.hashSync(req.body.password, saltRounds);
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 89fc1078da7beef93d80d96184f104f5d02deb73
       standardRole = {
         role: 'standard'
       }
 
       let newUser = {
-<<<<<<< HEAD
         username: req.body.username,
-        password: hashPassword,
-=======
-        userName: req.body.username,
         password: hashedPassword,
->>>>>>> 89fc1078da7beef93d80d96184f104f5d02deb73
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         phoneNumber: req.body.phoneNumber,
