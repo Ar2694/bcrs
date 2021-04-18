@@ -13,7 +13,7 @@ const express = require('express');
 const User = require('../models/user')
 const BaseResponse = require('../services/base-response');
 const ErrorResponse = require('../services/error-response')
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const RoleSchema = require('../schemas/user-role')
 
 
@@ -31,7 +31,7 @@ const saltRounds = 10; //default salt rounds for hashing algorithm
 router.get('/', async (req, res) => {
   try {
     //Retrieve all users data.
-    User.find({}).where('isDisabled').equals(false).exec(function(err, users){
+    User.find({}).where('isDisabled').equals(true).exec(function(err, users){
 
       //Check for errors
       if(err){
@@ -93,17 +93,17 @@ router.get('/:id', async(req, res) => {
  */
 router.post('/', async(res, req) => {
     try {
+    
       //convert user password into a hash password.
-      let hashPassword = bcrypt.hashSync(req.body.password, saltRounds);
+      let hashedPassword = bcrypt.hashSync(req.body.password, saltRounds);
 
-      
       standardRole = {
         role: 'standard'
       }
 
       let newUser = {
         userName: req.body.username,
-        password: hashPassword,
+        password: hashedPassword,
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         phoneNumber: req.body.phoneNumber,
@@ -118,18 +118,21 @@ router.post('/', async(res, req) => {
         //Check for any errors
         if(err){
           console.log(err);
+          console.log(req.body);
           const createUserMongodbErrorResponse  = new ErrorResponse (500, 'Internal Server Error', err);
           res.status(500).send(createUserMongodbErrorResponse.toObject());
         }
         //Send the user object and response*/ 
         else{
           console.log(user);
+          console.log(req.body);
           const createUserResponse = new BaseResponse(200, 'Query Successful', user);
-          res.json(createUserResponse.toObject());
+          res.send(createUserResponse.toObject());
         }
       })
     } catch (error) {
       console.log(error);
+      console.log(req.body);
       const createUserCatchErrorResponse = new ErrorResponse(500, 'Internal Server Error', error);
       res.status(500).send(createUserCatchErrorResponse.toObject());
     }
@@ -142,7 +145,7 @@ router.post('/', async(res, req) => {
 router.put('/:id', async (req, res) => {
   try {
 
-    User.findOne({'_id': req.params.id }, function(err, user){
+    User.findOne({'_id': req.body.id }, function(err, user){
 
       // Checking for errors
       if(err){

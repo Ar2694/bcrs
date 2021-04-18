@@ -134,7 +134,7 @@ router.post('/', async(req, res) => {
 /**
  * UpdateSecurityQuestion API
 */
-router.post('/:id', async(req, res) =>{
+router.put('/:id', async(req, res) =>{
   try{
     SecurityQuestion.findOne({'_id': req.params.id}, function(err, securityQuestion){
   
@@ -198,7 +198,7 @@ try{
   
          }else{
           console.log(savedSecurityQuestion);
-          const deleteSecurityQuestionResponse = new BaseResponse(200, 'Query Successful', UpdateSecurityQuestion);
+          const deleteSecurityQuestionResponse = new BaseResponse(200, 'Query Successful', savedSecurityQuestion);
            res.json(deleteSecurityQuestionResponse.toObject());
          }
        })
