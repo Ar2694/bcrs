@@ -49,7 +49,8 @@ const conn = 'mongodb+srv://bcrsAdmin:bcrsPassword@buwebdev-cluster-1.z53kv.mong
 mongoose.connect(conn, {
   promiseLibrary: require('bluebird'),
   useUnifiedTopology: true,
-  useNewUrlParser: true
+  useNewUrlParser: true,
+  userCreateIndex: true
 }).then(() => {
   console.debug(`Connection to the database instance was successful`);
 }).catch(err => {
