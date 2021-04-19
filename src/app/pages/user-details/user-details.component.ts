@@ -2,7 +2,7 @@
 ============================================
 ; Title: user-details.component.ts
 ; Author: Professor Krasso
-; Date:   186 April 2021
+; Date:   18 April 2021
 ; Modified by: Karina Alvarez
 ; Description: User details page
 ;===========================================

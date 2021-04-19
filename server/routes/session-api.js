@@ -25,6 +25,7 @@ const router = express.Router();
 router.post('/signin', async(req, res) => {
   try
   {
+    //finding the user by username
     User.findOne({'username': req.body.username}, function(err, user) {
       if (err)
       {
