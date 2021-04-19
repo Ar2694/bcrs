@@ -59,7 +59,6 @@ export class SecurityQuestionDetailsComponent implements OnInit {
     const updatedSecurityQuestion = {} as SecurityQuestion;
     updatedSecurityQuestion.text = this.form.controls.text.value;
 
-    //ERROR
     this.securityQuestionService.updateSecurityQuestion(this.questionId, updatedSecurityQuestion).subscribe(res => {
         this.router.navigate(['/security-questions']);
       });
