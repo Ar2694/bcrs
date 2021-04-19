@@ -1,1 +1,56 @@
-<p>user-create works!</p>
+<!--
+/*
+============================================
+; Title:  base.response.js
+; Author: Professor Krasso
+; Date:   17 April 2021
+; Modified by: Douglas Jenkins
+; Description: User Create
+;===========================================
+*/
+-->
+<div fxLayout="column">
+  <mat-card class="mat-elevation-z8">
+    <mat-card-title>Create User</mat-card-title>
+    <br>
+
+    <form [formGroup]="form" (ngSubmit)="createUser()" #userForm>
+      <mat-card-content>
+        <div fxLayout="column" fxLayoutGap="10px">
+          <!--- The input information that needs to be filled out -->
+
+          <mat-form-field>
+            <input type="text" matInput [formControl]="form.controls['username']" placeholder="Username">
+          </mat-form-field>
+
+          <mat-form-field>
+            <input type="text" matInput [formControl]="form.controls['password']" placeholder="Password">
+          </mat-form-field>
+
+          <mat-form-field>
+            <input type="text" matInput [formControl]="form.controls['firstname']" placeholder="First name">
+          </mat-form-field>
+
+          <mat-form-field>
+            <input type="text" matInput [formControl]="form.controls['phoneNumber']" placeholder="Phone number">
+          </mat-form-field>
+
+          <mat-form-field>
+            <input type="text" matInput [formControl]="form.controls['address']" placeholder="Address">
+          </mat-form-field>
+
+          <mat-form-field>
+            <input type="text" matInput [formControl]="form.controls['email']" placeholder="Email">
+          </mat-form-field>
+
+        </div>
+      </mat-card-content>
+
+      <br>
+      <mat-card-actions align="end">
+        <button mat-raised-button (click)="cancel()" color="warn">Cancel</button>
+        <button type="submit" mat-raised-button color="accent">Submit</button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</div>
