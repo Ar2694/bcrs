@@ -1,65 +1,36 @@
-<div fxLayout='columns' fxLayoutAlign='center' class="user-container">
-  <mat-card class="mat-elevation-z8" fxLayout='column' fxLayoutAlign='center'>
+<div fxLayout = "column">
+  <h1 class = "header">Manage Users</h1>
 
-    <!-- Title for the user configuration page -->
-    <mat-card-title>User Configuration</mat-card-title>
-    <mat-card-subtitle>
-      <button mat-button routerLink='/users/create/new' color='primary'> Create</button>
-    </mat-card-subtitle>
-
-    <!--
-      * table showing every field required when creating an account
-      * here admin will be able to edit or delete each user
-    -->
-    <mat-card-content *ngIf="users">
-      <table mat-table [dataSource]='users'>
-        <nt-container matColumnDef='username'>
-          <th mat-header-cell *matHeaderCellDef>Username</th>
-          <td mat-cell *matCellDef='let element'>
-            {{ element.username }}
-          </td>
-        </nt-container>
-
-        <ng-container matColumnDef='firstname'>
-          <th mat-header-cell *matHeaderCellDef>First Name</th>
-          <td mat-cell *matCellDef='let element'> {{ element.firstname }}</td>
-        </ng-container>
-
-        <ng-container matColumnDef='lastname'>
-          <th mat-header-cell *matHeaderCellDef>LAst Name</th>
-          <td mat-cell *matCellDef='let element'> {{ element.lastname }}</td>
-        </ng-container>
-
-        <ng-container matColumnDef='phoneNumber'>
-          <th mat-header-cell *matHeaderCellDef>Phone Number</th>
-          <td mat-cell *matCellDef='let element'> {{ element.phoneNumber | phoneFormat }}</td>
-        </ng-container>
-
-        <ng-container matColumnDef='address'>
-          <th mat-header-cell *matHeaderCellDef>Address</th>
-          <td mat-cell *matCellDef='let element'> {{ element.address }}</td>
-        </ng-container>
-
-        <ng-container matColumnDef='email'>
-          <th mat-header-cell *matHeaderCellDef>Email</th>
-          <td mat-cell *matCellDef='let element'> {{ element.email }}</td>
-        </ng-container>
-
-        <ng-container matColumnDef='functions'>
-          <th mat-header-cell *matHeaderCellDef>Functions</th>
-          <td mat-cell *matCellDef='let element'>
-            <button mat-icon-button routerLink='./users/{{ element._id }}'>
-              <mat-icon color='accent'>edit</mat-icon>
+  <div>
+    <div *ngIf = "users">
+      <mat-card *ngFor = "let User of users" class = "mat-elevation-z12 user-card">
+        <mat-card-title>{{User.firstname + " " + User.lastname}}
+          <mat-card-content>
+            <button mat-icon-button (click) = "delete(User._id, User.username)">
+              <mat-icon>delete</mat-icon>
             </button>
-            <button mat-icon-button (click)='delete(element._id, element.username)'>
-              <mat-icon color='accent'>delete</mat-icon>
+            <button mat-icon-button routerLink = "/users/{{User._id}}">
+              <mat-icon>edit</mat-icon>
             </button>
-          </td>
-        </ng-container>
+            <!--User pic-->
+            <img class = "user-icon" src="../../../assets/user.png">
+            <mat-card-subtitle class = "ID">Role: {{User.role}}</mat-card-subtitle>
+            <div class = "info1">
+              <p>Username: {{User.username}}</p>
+              <p>Phone Number: {{User.phoneNumber}}</p>
+              <p>Address: {{User.address}}</p>
+            </div>
 
-        <tr mat-header-row *matHeaderRowRef="displayedColumns"></tr>
-        <tr mat-row *matRowRef='let row; columns: displayedColumns;'></tr>
-      </table>
-    </mat-card-content>
-  </mat-card>
+            <div class = "info2">
+              <p>Email: {{User.email}}</p>
+              <p>Date Created: {{User.date_created}}</p>
+              <p>Date Modified: {{User.date_modified}}</p>
+            </div>
+
+          </mat-card-content>
+        </mat-card-title>
+      </mat-card>
+      <br/><br/>
+    </div>
+  </div>
 </div>

@@ -59,9 +59,10 @@ const routes: Routes = [
         component: SecurityQuestionCreateComponent
       },
     ],
-    canActivate: [AuthGuard]
+  //  canActivate: [AuthGuard]
   },
-  {
+ /**
+  * {
     path: 'session',
     component:AuthLayoutComponent,
     children: [
@@ -71,6 +72,7 @@ const routes: Routes = [
       }
     ]
   }
+  */
 ];
 
 @NgModule({
