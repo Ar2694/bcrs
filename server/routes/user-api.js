@@ -157,8 +157,8 @@ router.put('/:id', async (req, res) => {
           // the following fields allow you update them
           user.set({
             username: req.body.username,
-            firstname: req.body.firstName,
-            lastname: req.body.lastName,
+            firstname: req.body.firstname,
+            lastname: req.body.lastname,
             phoneNumber: req.body.phoneNumber,
             address: req.body.address,
             email: req.body.email,

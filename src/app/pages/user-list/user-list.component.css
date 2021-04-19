@@ -5,7 +5,8 @@
 
 .user-list {
   min-width: 85%;
-  margin: 50px auto 50px;
+  margin-top: 4%;
+  margin-bottom: 20%;
 }
 
 .mat-raised-button {
@@ -19,3 +20,10 @@
 .mat-header-cell {
   padding-right: 30px;
 }
+
+@media only screen and (max-width: 750px) {
+  .user-list {
+    margin-bottom: 15%;
+  }
+}
+

@@ -21,8 +21,11 @@ import { CookieService } from 'ngx-cookie-service';
 export class BaseLayoutComponent implements OnInit {
 
   year: number = Date.now();
+  assignment: string;
 
-  constructor(private cookieService: CookieService, private router: Router) { }
+  constructor(private cookieService: CookieService, private router: Router) {
+    this.assignment = "Bob's Computer Repair Shop";
+  }
 
   ngOnInit(): void {
   }

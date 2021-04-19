@@ -51,6 +51,21 @@
     text-decoration: underline;
   }
 
+    /* This will affect padding, width, and margin of the main container*/
+.main-container {
+  padding-top: 25px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+/* This will centered the title on the app-component.html*/
+.title {
+  text-align: center;
+  padding-top: 30px;
+  font-size: 5em;
+}
+
+
   /*
   * Styling for dropdown menu
   */
@@ -93,7 +108,7 @@
   /*
     Making navbar responsive in smaller screens
   */
-  @media only screen and (max-width: 700px) {
+  @media only screen and (max-width: 780px) {
     .logo {
       margin-left: 10px;
       font-size: 20px;
@@ -105,5 +120,10 @@
 
     .navbar-link {
       font-size: 16px;
+    }
+
+    .title {
+      padding-top: 20px;
+      font-size: 2.5em;
     }
   }
