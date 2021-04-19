@@ -11,7 +11,7 @@
 //require files to export
 const express = require('express');
 const User = require('../models/user')
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcryptjs')
 const BaseResponse = require('../services/base-response');
 const ErrorResponse = require('../services/error-response')
 
@@ -41,7 +41,7 @@ router.post('/signin', async(req, res) => {
         // if...else function to determine what would happen if user is valid or invalid
         if (user)
         {
-          let passwordIsValid = bcrypt.compareSync(req.body.password, user.password)
+          let passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
 
           //if...else function to determine what would happened if password is valid or invalid
           if (passwordIsValid)
@@ -55,7 +55,7 @@ router.post('/signin', async(req, res) => {
           {
             console.log(`Invalid password for username: ${user.username}`);
 
-            const invalidPasswordResponse = new BaseResponse(401, 'Invalid username and/or password. Please try again.', null);
+            const invalidPasswordResponse = new BaseResponse(401, 'Invalid password. Please try again.', null);
             res.status(401).send(invalidPasswordResponse.toObject());
           }
           //end of if...else function for password validation
@@ -64,7 +64,7 @@ router.post('/signin', async(req, res) => {
         {
           console.log(`username: ${req.body.username} is invalid`)
 
-          const invalidUserNameResponse = new BaseResponse(401, `Invalid username and/or password. Please try again.`, null);
+          const invalidUserNameResponse = new BaseResponse(401, `Invalid username. Please try again.`, null);
           res.status(401).setDefaultEncoding(invalidUserNameResponse.toObject());
         }
         //end of if...else function for user validation

@@ -100,10 +100,10 @@ router.post('/', async (req, res) => {
     }
 
     let newUser = {
-      userName: req.body.username,
+      username: req.body.username,
       password: hashedPassword,
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
+      firstname: req.body.firstName,
+      lastname: req.body.lastName,
       phoneNumber: req.body.phoneNumber,
       address: req.body.address,
       email: req.body.email,
@@ -120,7 +120,7 @@ router.post('/', async (req, res) => {
         const createUserMongodbErrorResponse = new ErrorResponse(500, 'Internal Server Error', err);
         res.status(500).send(createUserMongodbErrorResponse.toObject());
       }
-      //Send the user object and response*/ 
+      //Send the user object and response*/
       else {
         console.log(user);
         console.log(req.body);

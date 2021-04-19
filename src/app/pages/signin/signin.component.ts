@@ -14,7 +14,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-signin',
@@ -48,7 +47,9 @@ export class SigninComponent implements OnInit {
     const username = this.signinForm.controls.username.value;
     const password = this.signinForm.controls.password.value;
 
-    this.http.post('/api/session/signin', { username, password }).subscribe(res => {
+    this.http.post('/api/session/signin', {
+      username, password
+    }).subscribe(res => {
       console.log(res['data']);
 
       /**
