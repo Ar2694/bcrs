@@ -1,3 +1,14 @@
+/*
+============================================
+; Title: security-question-details.component.ts
+; Author: Professor Krasso
+; Date:   18 April 2021
+; Modified by: Karina Alvarez
+; Description: security question details page
+;===========================================
+*/
+
+//These are files being imported from external files
 import { Component, OnInit } from '@angular/core';
 
 @Component({

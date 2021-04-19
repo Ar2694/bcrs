@@ -1,5 +1,6 @@
 /*
 ============================================
+<<<<<<< HEAD
 ; Title:  base.response.js
 ; Author: Professor Krasso
 ; Date:   17 April 2021
@@ -8,6 +9,17 @@
 ;===========================================
 */
 
+=======
+; Title:
+; Author: Professor Krasso
+; Date:   18 April 2021
+; Modified by:
+; Description:
+;===========================================
+*/
+
+//These are files being imported from external files
+>>>>>>> 6ed4496f7e8ee63148b91f31ba81c9763aaf09af
 import { Component, OnInit } from '@angular/core';
 import { User } from './../../shared/user.interface';
 import { UserService } from './../../shared/user.service';
