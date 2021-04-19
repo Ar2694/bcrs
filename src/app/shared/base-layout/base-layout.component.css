@@ -21,7 +21,7 @@
   }
 
   .main-content {
-    padding-left: 30px;
+    padding-bottom: 15%;
   }
 
   /*
@@ -29,9 +29,11 @@
   */
   .footer {
     bottom: 0;
-    position: absolute;
     width: 100%;
-  }
+    position: fixed;
+    left: 0;
+    text-align: center;
+    }
 
   .footer-content {
     font-size: 16px;
@@ -85,7 +87,6 @@
   .icon:hover {
     cursor: pointer;
   }
-
   /*
     Making navbar responsive in smaller screens
   */
