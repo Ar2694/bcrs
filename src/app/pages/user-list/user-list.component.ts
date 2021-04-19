@@ -2,7 +2,7 @@
 ============================================
 ; Title: user-list.component.ts
 ; Author: Professor Krasso
-; Date:   17 April gfvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv2021
+; Date:   17 April 2021
 ; Modified by: Karina Alvarez
 ; Description: User List component
 ;===========================================

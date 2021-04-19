@@ -1,3 +1,14 @@
+/*
+============================================
+; Title: base-layout.component.ts
+; Author: Professor Krasso
+; Date:   16 April 2021
+; Modified by: Karina Alvarez
+; Description: base layout
+;===========================================
+*/
+
+//These are files being imported from external files
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';

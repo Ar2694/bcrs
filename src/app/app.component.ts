@@ -3,8 +3,8 @@
 ; Title: app.component.ts
 ; Author: Professor Krasso
 ; Date:   16 April 2021
-; Modified by:
-; Description:
+; Modified by: Karina Alvarez, Douglas Jenkins, Arlix Sorto
+; Description: app component
 ;===========================================
 */
 

@@ -44,12 +44,12 @@ export class UserService {
    * @returns an observably of any
    */
   createUser(user: User): Observable<any> {
-   
+
     return this.http.post('/api/users', {
-      userName: user.userName,
+      username: user.username,
       password: user.password,
-      firstName: user.firstName,
-      lastName: user.lastName,
+      firstname: user.firstname,
+      lastname: user.lastname,
       phoneNumber: user.phoneNumber,
       address: user.address,
       email: user.email
@@ -64,10 +64,10 @@ export class UserService {
    */
   updateUser(userId: string, user: User): Observable<any> {
     return this.http.put(`/api/users/${userId}`, {
-      userName: user.userName,
+      username: user.username,
       password: user.password,
-      firstName: user.firstName,
-      lastName: user.lastName,
+      firstname: user.firstname,
+      lastname: user.lastname,
       phoneNumber: user.phoneNumber,
       address: user.address,
       email: user.email
