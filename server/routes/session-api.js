@@ -65,7 +65,7 @@ router.post('/signin', async(req, res) => {
           console.log(`username: ${req.body.username} is invalid`)
 
           const invalidUserNameResponse = new BaseResponse(401, `Invalid username. Please try again.`, null);
-          res.status(401).setDefaultEncoding(invalidUserNameResponse.toObject());
+          res.status(401).send(invalidUserNameResponse.toObject());
         }
         //end of if...else function for user validation
       }
