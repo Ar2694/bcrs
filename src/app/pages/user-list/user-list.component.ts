@@ -9,7 +9,6 @@
 */
 
 //These are files being imported from external files
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteRecordDialogComponent } from 'src/app/shared/delete-record-dialog/delete-record-dialog.component';
@@ -26,7 +25,7 @@ export class UserListComponent implements OnInit {
   users: User[];
   displayedColumns = ['username', 'firstname', 'lastname', 'phoneNumber', 'address', 'email', 'functions'];
 
-  constructor(private http: HttpClient, private dialog: MatDialog, private userService: UserService) {
+  constructor(private dialog: MatDialog, private userService: UserService) {
 
     /**
      * This will find all the users
@@ -65,6 +64,10 @@ export class UserListComponent implements OnInit {
       if (result === 'confirm') {
         this.userService.deleteUser(userId).subscribe(res => {
           console.log('User deleted');
+          /**
+            This will return a new array of users not matching
+            the one currently deleted
+          */
           this.users = this.users.filter(u => u._id !== userId)
         })
       }

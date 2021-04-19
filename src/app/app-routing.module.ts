@@ -43,7 +43,7 @@ const routes: Routes = [
         component: UserDetailsComponent
       },
       {
-        path: 'user/create/new',
+        path: 'users/create/new',
         component: UserCreateComponent
       },
       {
