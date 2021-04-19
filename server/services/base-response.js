@@ -21,7 +21,6 @@ class BaseResponse {
     this.httpCode = httpCode;
     this.message = message;
     this.data = data;
-    this.timestamp = new Date().toLocaleDateString();
   }
 
   /**
@@ -35,7 +34,7 @@ class BaseResponse {
       "httpCode": this.httpCode,
       "message": this.message,
       "data": this.data,
-      "timestamp": this.timestamp
+      "timestamp": new Date().toLocaleDateString()
     }
   }
 }

@@ -29,8 +29,8 @@ export class SecurityQuestionService {
   }
 
   /**
-   * 
-   * @param _id 
+   *
+   * @param _id
    * @returns Get request to find a security question by ID.
    */
   findSecurityQuestionById(_id: string): Observable<any> {
@@ -38,30 +38,30 @@ export class SecurityQuestionService {
   }
 
   /**
-   * 
-   * @param securityQuestion 
+   *
+   * @param newSecurityQuestion
    * @returns Post request to create a new security question
    */
-  createSecurityQuestion(securityQuestion: SecurityQuestion): Observable<any>{
+  createSecurityQuestion(newSecurityQuestion: SecurityQuestion): Observable<any>{
     return this.http.post('/api/security-questions', {
-      text: securityQuestion.text
+      text: newSecurityQuestion.text
     });
   }
 /**
- * 
- * @param securityQuestion 
+ *
+ * @param UpdatedSecurityQuestion
  * @param _id
  * @returns Post request to update a security question.
  */
-  updateSecurityQuestion(securityQuestion: SecurityQuestion, _id: string): Observable<any>{
+  updateSecurityQuestion(updateSecurityQuestion: SecurityQuestion, _id: string): Observable<any>{
     return this.http.put(`/api/security-questions/${_id}`, {
-      text: securityQuestion.text
+      text: updateSecurityQuestion.text
     });
   }
 
   /**
-   * 
-   * @param _id 
+   *
+   * @param _id
    * @return Delete request to delete a security question.
    */
   deleteSecurityQuestion(_id: string):Observable<any>{

@@ -32,7 +32,7 @@ class ErrorResponse {
       'httpCode': this.httpCode,
       'message': this.message,
       'data': this.data,
-      'timestamp': new Date().toLocaleDataString()
+      'timestamp': new Date().toLocaleDateString()
     }
   }
 }

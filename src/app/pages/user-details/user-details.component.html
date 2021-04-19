@@ -1,11 +1,11 @@
-<div fxLayout="column">
+<div fxLayout="column" class="user-details-container">
 
   <!--User Details Form-->
   <mat-card class="mat-elevation-z8">
     <mat-card-title>User Details</mat-card-title>
     <br/>
 
-    <form [formGroup]="form" (ngSubmit)="saveUser()" #userForm>
+    <form [formGroup]="form" (ngSubmit)="saveUser()" #userForm='ngForm'>
       <mat-card-content>
         <div fxLayout="column" fxLayoutGap="10px">
 

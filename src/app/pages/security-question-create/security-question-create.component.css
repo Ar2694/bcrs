@@ -1,9 +1,8 @@
 /*
-============================================
-; Title:  base.response.js
-; Author: Professor Krasso
-; Date:   17 April 2021
-; Modified by: Douglas Jenkins
-; Description: User Create
-;===========================================
+  Main container styling
 */
+.SQ-create-container {
+  width: 50%;
+  min-width: 400px;
+  margin: 50px auto 0;
+}

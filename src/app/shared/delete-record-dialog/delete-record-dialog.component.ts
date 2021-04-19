@@ -19,13 +19,13 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class DeleteRecordDialogComponent implements OnInit {
 
-  username: string;
+  recordId: string;
   dialogHeader: string;
   dialogBody: string
 
   //creating the base for the delete dialog
   constructor(private dialogRef: MatDialogRef<DeleteRecordDialogComponent>, @Inject(MAT_DIALOG_DATA) data) {
-    this.username = data.username;
+    this.recordId = data.recordId;
     this.dialogHeader = data.dialogHeader;
     this.dialogBody = data.dialogBody;
   }

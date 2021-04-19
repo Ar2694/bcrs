@@ -28,7 +28,7 @@ export class UserDetailsComponent implements OnInit {
   form: FormGroup;
   roles: any;
 
-  constructor(private route: ActivatedRoute, private http: HttpClient, private fb: FormBuilder,
+  constructor(private route: ActivatedRoute, private fb: FormBuilder,
               private router: Router, private userService: UserService) {
 
     this.userId = this.route.snapshot.paramMap.get('userId');
@@ -39,7 +39,7 @@ export class UserDetailsComponent implements OnInit {
     this.userService.findUserById(this.userId).subscribe(res => {
 
 
-      this.user = res['data'];
+      this.user = res.data;
       }, err => {
         console.log(err);
       }, () => {
@@ -57,7 +57,7 @@ export class UserDetailsComponent implements OnInit {
       username: [null, Validators.compose([Validators.required])],
       firstname: [null, Validators.compose([Validators.required])],
       lastname: [null, Validators.compose([Validators.required])],
-      phoneNumber: [null, Validators.compose([Validators.required])],
+      phoneNumber: [null, Validators.compose([Validators.required, Validators.pattern('^[0-9]*$')])],
       address: [null, Validators.compose([Validators.required])],
       email: [null, Validators.compose([Validators.required, Validators.email])],
     });
@@ -66,10 +66,10 @@ export class UserDetailsComponent implements OnInit {
   /**
    * saving updates into user fields and returning to users page
    */
-  saveUser() {
+  saveUser():void {
     const updatedUser = {} as User;
     updatedUser.username = this.form.controls.username.value;
-    updatedUser.firstname = this.form.controls.firstName.value;
+    updatedUser.firstname = this.form.controls.firstname.value;
     updatedUser.lastname = this.form.controls.lastname.value;
     updatedUser.phoneNumber = this.form.controls.phoneNumber.value;
     updatedUser.address = this.form.controls.address.value;
