@@ -45,14 +45,14 @@ export class UserListComponent implements OnInit {
   /**
    *
    * @param userId
-   * @param recordId
+   * @param username
    */
-  delete(userId, recordId) {
+  delete(userId, username) {
     const dialogRef = this.dialog.open(DeleteRecordDialogComponent, {
       data: {
-        recordId,
+        username,
         dialogHeader: 'Delete Record Dialog',
-        dialogBody: `Are you sure you want to delete user ${recordId}?`
+        dialogBody: `Are you sure you want to delete user ${username}?`
       },
       disableClose: true,
       width: '800px'
@@ -64,7 +64,7 @@ export class UserListComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result === 'confirm') {
         this.userService.deleteUser(userId).subscribe(res => {
-          console.log('User delete');
+          console.log('User deleted');
           this.users = this.users.filter(u => u._id !== userId)
         })
       }
