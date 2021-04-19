@@ -31,16 +31,16 @@ const saltRounds = 10; //default salt rounds for hashing algorithm
 router.get('/', async (req, res) => {
   try {
     //Retrieve all users data.
-    User.find({}).where('isDisabled').equals(true).exec(function(err, users){
+    User.find({}).where('isDisabled').equals(true).exec(function (err, users) {
 
       //Check for errors
-      if(err){
+      if (err) {
         console.log(err);
         const findAllMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
         res.status(500).send(findAllMongodbErrorResponse.toObject());
       }
       //If no error, send the users object and response*/
-      else{
+      else {
         console.log(users);
         const findAllUsersResponse = new BaseResponse(200, 'Query successful', users);
         res.json(findAllUsersResponse.toObject());
@@ -50,7 +50,7 @@ router.get('/', async (req, res) => {
 
   catch (error) {
     console.log(error);
-    const findAllCatchErrorResponse = new ErrorResponse (500, 'Internal Server Error', error);
+    const findAllCatchErrorResponse = new ErrorResponse(500, 'Internal Server Error', error);
     res.status(500).send(findAllCatchErrorResponse.toObject());
   }
 
@@ -61,11 +61,10 @@ router.get('/', async (req, res) => {
  * FindById API
  * http://localhost:3000/api/users/:id
  */
-router.get('/:id', async(req, res) => {
-  try
-  {
+router.get('/:id', async (req, res) => {
+  try {
     //this is how we are filtering the data
-    User.findOne({'_id': req.params.id}, function(err, user) {
+    User.findOne({ '_id': req.params.id }, function (err, user) {
       if (err) {
         console.log(err);
         const findByIdMongodbErrorResponse = new ErrorResponse(500, 'MongoDB native error', err);
@@ -79,10 +78,9 @@ router.get('/:id', async(req, res) => {
       }
     })
   }
-  catch (e)
-  {
+  catch (e) {
     console.log(e);
-    const findByIdCatchErrorResponse = new ErrorResponse (500, 'Internal Server Error', e);
+    const findByIdCatchErrorResponse = new ErrorResponse(500, 'Internal Server Error', e);
     res.status(500).send(findByIdCatchErrorResponse.toObject());
   }
 });
@@ -91,51 +89,51 @@ router.get('/:id', async(req, res) => {
  * CreateUser API
  * http://localhost:3000/api/users
  */
-router.post('/', async(res, req) => {
-    try {
+router.post('/', async (req, res) => {
+  try {
+    console.log(req.body);
+    //convert user password into a hash password.
+    let hashedPassword = bcrypt.hashSync(req.body.password, saltRounds);
 
-      //convert user password into a hash password.
-      let hashedPassword = bcrypt.hashSync(req.body.password, saltRounds);
-
-      standardRole = {
-        role: 'standard'
-      }
-
-      let newUser = {
-        username: req.body.username,
-        password: hashedPassword,
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        phoneNumber: req.body.phoneNumber,
-        address: req.body.address,
-        email: req.body.email,
-        role: standardRole
-      }
-
-      //Create a new user
-      User.create(newUser, function(err, user){
-
-        //Check for any errors
-        if(err){
-          console.log(err);
-          console.log(req.body);
-          const createUserMongodbErrorResponse  = new ErrorResponse (500, 'Internal Server Error', err);
-          res.status(500).send(createUserMongodbErrorResponse.toObject());
-        }
-        //Send the user object and response*/
-        else{
-          console.log(user);
-          console.log(req.body);
-          const createUserResponse = new BaseResponse(200, 'Query Successful', user);
-          res.send(createUserResponse.toObject());
-        }
-      })
-    } catch (error) {
-      console.log(error);
-      console.log(req.body);
-      const createUserCatchErrorResponse = new ErrorResponse(500, 'Internal Server Error', error);
-      res.status(500).send(createUserCatchErrorResponse.toObject());
+    standardRole = {
+      role: 'standard'
     }
+
+    let newUser = {
+      userName: req.body.username,
+      password: hashedPassword,
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      phoneNumber: req.body.phoneNumber,
+      address: req.body.address,
+      email: req.body.email,
+      role: standardRole
+    }
+
+    //Create a new user
+    User.create(newUser, function (err, user) {
+
+      //Check for any errors
+      if (err) {
+        console.log(err);
+        console.log(req.body);
+        const createUserMongodbErrorResponse = new ErrorResponse(500, 'Internal Server Error', err);
+        res.status(500).send(createUserMongodbErrorResponse.toObject());
+      }
+      //Send the user object and response*/ 
+      else {
+        console.log(user);
+        console.log(req.body);
+        const createUserResponse = new BaseResponse(200, 'Query Successful', user);
+        res.send(createUserResponse.toObject());
+      }
+    })
+  } catch (error) {
+    console.log(error);
+    console.log(req.body);
+    const createUserCatchErrorResponse = new ErrorResponse(500, 'Internal Server Error', error);
+    res.status(500).send(createUserCatchErrorResponse.toObject());
+  }
 });
 
 /**
@@ -145,49 +143,60 @@ router.post('/', async(res, req) => {
 router.put('/:id', async (req, res) => {
   try {
 
-    User.findOne({'_id': req.body.id }, function(err, user){
+    User.findOne({ '_id': req.params.id }, function (err, user) {
 
       // Checking for errors
-      if(err){
+      if (err) {
         console.log(err);
         const updateUserMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
         res.status(500).send(updateUserMongodbErrorResponse.toObject());
       }
 
-      else{
+      else {
         console.log(user);
 
-        // the following fields allow you update them
-        user.set({
-          firstName: req.body.firstName,
-          lastName: req.body.lastName,
-          phoneNumber: req.body.phoneNumber,
-          address: req.body.address,
-          email: req.body.email
-        })
 
-        // saves the updates
-        user.save(function(err, savedUser){
-          if (err) {
-            console.log(err);
-            const saveUserMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
-            res.status(500).send(saveUserMongodbErrorResponse.toObject());
-          } else {
-            console.log(savedUser);
-            const saveUserResponse = new BaseResponse(200, 'Query Successful', user);
-            res.json(saveUserResponse.toObject());
-          }
+        /**Check if user is not null or valid*/
+        if (user) {
+          // the following fields allow you update them
+          user.set({
+            userName: req.body.username,
+            password: req.body.password,
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            phoneNumber: req.body.phoneNumber,
+            address: req.body.address,
+            email: req.body.email,
+          });
+          // saves the updates
+          user.save(function (err, savedUser) {
+            if (err) {
+              console.log(err);
+              const saveUserMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
+              res.status(500).send(saveUserMongodbErrorResponse.toObject());
+            } else {
+              console.log(savedUser);
+              const saveUserResponse = new BaseResponse(200, 'Query Successful', user);
+              res.json(saveUserResponse.toObject());
+            }
 
-        })
+          });
+
+        }
+        /**Or else send invalid userId response and null */
+        else {
+
+          const invalidUserIdResponse = new BaseResponse("200", "Invalid user ID", null);
+          res.status(200).send(invalidUserIdResponse.toObject());
+        }
 
       }
-
     });
   }
 
   catch (error) {
     console.log(error);
-    const updateUserCatchErrorResponse = new ErrorResponse (500, 'Internal Server Error', error);
+    const updateUserCatchErrorResponse = new ErrorResponse(500, 'Internal Server Error', error);
     res.status(500).send(updateUserCatchErrorResponse.toObject());
   }
 
@@ -198,11 +207,10 @@ router.put('/:id', async (req, res) => {
  * FindById API
  * http://localhost:3000/api/users/:id
  */
-router.get('/:id', async(req, res) => {
-  try
-  {
+router.get('/:id', async (req, res) => {
+  try {
     //this is how we are filtering the data
-    User.findOne({'_id': req.params.id}, function(err, user) {
+    User.findOne({ '_id': req.params.id }, function (err, user) {
       if (err) {
         console.log(err);
         const findByIdMongodbErrorResponse = new ErrorResponse(500, 'MongoDB native error', err);
@@ -216,10 +224,9 @@ router.get('/:id', async(req, res) => {
       }
     })
   }
-  catch (e)
-  {
+  catch (e) {
     console.log(e);
-    const findByIdCatchErrorResponse = new ErrorResponse (500, 'Internal Server Error', e);
+    const findByIdCatchErrorResponse = new ErrorResponse(500, 'Internal Server Error', e);
     res.status(500).send(findByIdCatchErrorResponse.toObject());
   }
 });
@@ -229,37 +236,33 @@ router.get('/:id', async(req, res) => {
  * DeleteUser API
  * http://localhost:3000/api/users/:id
  */
-router.delete('/:id', async(req, res) => {
-  try
-  {
+router.delete('/:id', async (req, res) => {
+  try {
     //this will help find the employee record
-    User.findOne({'_id': req.params.id}, function (err, user) {
+    User.findOne({ '_id': req.params.id }, function (err, user) {
 
       //if...else function for error handling
-      if (err)
-      {
+      if (err) {
         console.log(err);
 
         const deleteUserMongodbErrorResponse = new ErrorResponse(500, 'MongoDB error', err);
         res.status(500).send(deleteUserMongodbErrorResponse.toObject());
       }
-      else
-      {
+      else {
         console.log(user);
 
         user.set({
           isDisabled: true
         });
 
-        user.save(function(err, savedUser) {
+        user.save(function (err, savedUser) {
           if (err) {
-            console.log (err);
+            console.log(err);
 
             const savedUserMongodbErrorResponse = new ErrorResponse('500', 'Internal Server Error', err);
             res.status(500).send(savedUserMongodbErrorResponse.toObject());
           }
-          else
-          {
+          else {
             console.log(savedUser);
 
             const savedUserResponse = new BaseResponse(200, 'Query Successful', savedUser);
@@ -269,8 +272,7 @@ router.delete('/:id', async(req, res) => {
       }
     })
   }
-  catch (e)
-  {
+  catch (e) {
     console.log(e);
     const deleteUserCatchErrorResponse = new ErrorResponse(500, 'Internal Server Error', err);
     res.status(500).send(deleteUserCatchErrorResponse.toObject());
