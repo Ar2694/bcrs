@@ -53,7 +53,7 @@ export class SecurityQuestionService {
  * @param _id
  * @returns Post request to update a security question.
  */
-  updateSecurityQuestion(updateSecurityQuestion: SecurityQuestion, _id: string): Observable<any>{
+  updateSecurityQuestion(_id: string, updateSecurityQuestion: SecurityQuestion): Observable<any>{
     return this.http.put(`/api/security-questions/${_id}`, {
       text: updateSecurityQuestion.text
     });

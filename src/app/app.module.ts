@@ -40,6 +40,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { MatMenuModule } from '@angular/material/menu';
     MatFormFieldModule,
     MatDialogModule,
     MatInputModule,
-    MatMenuModule
+    MatMenuModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

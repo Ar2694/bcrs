@@ -31,7 +31,7 @@ const saltRounds = 10; //default salt rounds for hashing algorithm
 router.get('/', async (req, res) => {
   try {
     //Retrieve all users data.
-    User.find({}).where('isDisabled').equals(true).exec(function (err, users) {
+    User.find({}).where('isDisabled').equals(false).exec(function (err, users) {
 
       //Check for errors
       if (err) {

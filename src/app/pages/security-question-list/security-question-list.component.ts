@@ -29,7 +29,7 @@ export class SecurityQuestionListComponent implements OnInit {
   constructor(private http: HttpClient, private dialog: MatDialog, private securityQuestionService: SecurityQuestionService) {
 
     this.securityQuestionService.findAllSecurityQuestion().subscribe( res => {
-      this.securityQuestions = res.data;
+      this.securityQuestions = res['data'];
     }, err => {
       console.log(err);
     })
