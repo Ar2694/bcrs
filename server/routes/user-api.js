@@ -14,7 +14,6 @@ const User = require('../models/user')
 const BaseResponse = require('../services/base-response');
 const ErrorResponse = require('../services/error-response')
 const bcrypt = require('bcryptjs');
-const RoleSchema = require('../schemas/user-role')
 
 
 //It defines router variables - configuration
@@ -33,25 +32,25 @@ router.get('/', async (req, res) => {
     //Retrieve all users data.
     User.find({}).where('isDisabled').equals(false).exec(function (err, users) {
 
-      //Check for errors
+      //Check for errors in MongoDB
       if (err) {
         console.log(err);
         const findAllMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
         res.status(500).send(findAllMongodbErrorResponse.toObject());
       }
-      //If no error, send the users object and response*/
+      //If no error, send the users object and response
       else {
         console.log(users);
-        const findAllUsersResponse = new BaseResponse(200, 'Query successful', users);
-        res.json(findAllUsersResponse.toObject());
+        const findAllMongodbUsersResponse = new BaseResponse(200, 'Query successful', users);
+        res.json(findAllMongodbUsersResponse.toObject());
       }
     });
   }
 
   catch (error) {
     console.log(error);
-    const findAllCatchErrorResponse = new ErrorResponse(500, 'Internal Server Error', error);
-    res.status(500).send(findAllCatchErrorResponse.toObject());
+    const findAllMongodbCatchErrorResponse = new ErrorResponse(500, 'Internal Server Error', error);
+    res.status(500).send(findAllMongodbCatchErrorResponse.toObject());
   }
 
 });
@@ -102,8 +101,8 @@ router.post('/', async (req, res) => {
     let newUser = {
       username: req.body.username,
       password: hashedPassword,
-      firstname: req.body.firstName,
-      lastname: req.body.lastName,
+      firstname: req.body.firstname,
+      lastname: req.body.lastname,
       phoneNumber: req.body.phoneNumber,
       address: req.body.address,
       email: req.body.email,
@@ -125,7 +124,7 @@ router.post('/', async (req, res) => {
         console.log(user);
         console.log(req.body);
         const createUserResponse = new BaseResponse(200, 'Query Successful', user);
-        res.send(createUserResponse.toObject());
+        res.json(createUserResponse.toObject());
       }
     })
   } catch (error) {
@@ -155,9 +154,6 @@ router.put('/:id', async (req, res) => {
       else {
         console.log(user);
 
-
-        /**Check if user is not null or valid*/
-        if (user) {
           // the following fields allow you update them
           user.set({
             username: req.body.username,
@@ -167,6 +163,7 @@ router.put('/:id', async (req, res) => {
             address: req.body.address,
             email: req.body.email,
           });
+
           // saves the updates
           user.save(function (err, savedUser) {
             if (err) {
@@ -178,24 +175,13 @@ router.put('/:id', async (req, res) => {
               const saveUserResponse = new BaseResponse(200, 'Query Successful', user);
               res.json(saveUserResponse.toObject());
             }
-
           });
-
-        }
-        /**Or else send invalid userId response and null */
-        else {
-
-          const invalidUserIdResponse = new BaseResponse("200", "Invalid user ID", null);
-          res.status(200).send(invalidUserIdResponse.toObject());
-        }
-
       }
     });
   }
-
-  catch (error) {
-    console.log(error);
-    const updateUserCatchErrorResponse = new ErrorResponse(500, 'Internal Server Error', error);
+  catch (e) {
+    console.log(e);
+    const updateUserCatchErrorResponse = new ErrorResponse(500, 'Internal Server Error', e.message);
     res.status(500).send(updateUserCatchErrorResponse.toObject());
   }
 
