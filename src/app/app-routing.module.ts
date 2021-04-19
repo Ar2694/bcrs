@@ -61,8 +61,7 @@ const routes: Routes = [
     ],
   //  canActivate: [AuthGuard]
   },
- /**
-  * {
+  {
     path: 'session',
     component:AuthLayoutComponent,
     children: [
@@ -72,7 +71,7 @@ const routes: Routes = [
       }
     ]
   }
-  */
+
 ];
 
 @NgModule({
