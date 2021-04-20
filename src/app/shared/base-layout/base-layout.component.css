@@ -1,4 +1,12 @@
 /*
+* Page Container
+*/
+.page-container{
+  position: relative;
+  min-height: 100vh;
+}
+
+/*
 * Styling for navigation bar
 */
 .logo {

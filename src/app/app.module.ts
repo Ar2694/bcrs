@@ -41,6 +41,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
 import {MatTableModule} from '@angular/material/table';
+import { AboutComponent } from './pages/about/about.component';
+import { ContactComponent } from './pages/contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +57,9 @@ import {MatTableModule} from '@angular/material/table';
     UserCreateComponent,
     UserDetailsComponent,
     UserListComponent,
-    DeleteRecordDialogComponent
+    DeleteRecordDialogComponent,
+    AboutComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
