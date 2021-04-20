@@ -136,6 +136,7 @@ router.post('/', async(req, res) => {
 */
 router.put('/:id', async(req, res) =>{
   try{
+    //filtering criteria to identify a record withing MongoDB
     SecurityQuestion.findOne({'_id': req.params.id}, function(err, securityQuestion){
 
       if (err)
@@ -178,6 +179,7 @@ router.put('/:id', async(req, res) =>{
 router.delete("/:id", async (req, res) => {
 try{
 
+  //filtering criteria to identify a record withing MongoDB
   SecurityQuestion.findOne({'_id': req.params.id}, function(err, securityQuestion){
     if(err){
       console.log(err);
