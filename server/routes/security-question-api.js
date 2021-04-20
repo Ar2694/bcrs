@@ -106,7 +106,7 @@ router.post('/', async(req, res) => {
 
     SecurityQuestion.create(newSecurityQuestion, function(err, securityQuestion) {
 
-
+      //error handling if...else function
       if (err)
       {
         console.log(err);
@@ -136,7 +136,7 @@ router.post('/', async(req, res) => {
 */
 router.put('/:id', async(req, res) =>{
   try{
-    //filtering criteria to identify a record withing MongoDB
+    //filtering criteria to identify a record within MongoDB
     SecurityQuestion.findOne({'_id': req.params.id}, function(err, securityQuestion){
 
       if (err)
@@ -152,6 +152,7 @@ router.put('/:id', async(req, res) =>{
           answer: req.body.answer
         });
         securityQuestion.save(function (err, UpdateSecurityQuestion){
+          //will handle mongoDB errors
           if(err){
             console.log(err);
             const saveSecurityQuestionErrorResponse = new ErrorResponse(500, 'Internal Server Error', err);
@@ -179,7 +180,7 @@ router.put('/:id', async(req, res) =>{
 router.delete("/:id", async (req, res) => {
 try{
 
-  //filtering criteria to identify a record withing MongoDB
+  //filtering criteria to identify a record within MongoDB
   SecurityQuestion.findOne({'_id': req.params.id}, function(err, securityQuestion){
     if(err){
       console.log(err);
