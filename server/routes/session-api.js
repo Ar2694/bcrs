@@ -3,7 +3,7 @@
 ; Title:  session-api.js
 ; Author: Professor Krasso
 ; Date:   15 April 2021
-; Modified by: Karina Alvarez
+; Modified by: Karina Alvarez, Douglas Jenkins, Arlix Sorto
 ; Description: Session APIs
 ;===========================================
 */
@@ -18,6 +18,7 @@ const ErrorResponse = require('../services/error-response')
 
 //It defines router variables - configuration
 const router = express.Router();
+const saltRounds = 10; //default salt rounds for hashing algorithm
 
 /**
  * User Sign-In
@@ -84,24 +85,41 @@ router.post('/signin', async(req, res) => {
 /**
  * Register
  */
+router.post('/register', async(req, res) => {
+
+});
+
+
 
 /**
  * Verify User
  */
+ router.get('/verify/users/:username', async(req, res) => {
+
+});
+
+
+
 
 /**
  * Verify Security Questions
  */
+ router.post('/verify/users/:username/security-questions', async(req, res) => {
+
+});
+
+
 
 /**
  * Reset Password
  */
 
-router.post('/users/:username/reset-password', async(res, req) => {
+router.post('/users/:username/reset-password', async(req, res) => {
+
+  let password = req.body.password
+
   try
   {
-    const password = req.body.password;
-
     /**
      * helps to find the user by username
      */
