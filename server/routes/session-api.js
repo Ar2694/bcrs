@@ -80,4 +80,81 @@ router.post('/signin', async(req, res) => {
   }
 });
 
+
+/**
+ * Register
+ */
+
+/**
+ * Verify User
+ */
+
+/**
+ * Verify Security Questions
+ */
+
+/**
+ * Reset Password
+ */
+
+router.post('/users/:username/reset-password', async(res, req) => {
+  try
+  {
+    const password = req.body.password;
+
+    /**
+     * helps to find the user by username
+     */
+    User.findOne({'username': req.params.username}, function(err, user) {
+      /**
+       * Helps with the handling of errors within MongoDB
+       */
+      if (err)
+      {
+        console.log(err);
+
+        const resetPasswordMongodbErrorResponse = new ErrorResponse(500, 'MongoDB Error', err);
+        res.status(500).send(resetPasswordMongodbErrorResponse.toObject());
+      }
+      else
+      {
+        console.log(user);
+        /**
+         * Hashing the password
+         */
+        let hashedPassword = bcrypt.hashSync(password, saltRound);
+
+        user.set({ password: hashedPassword });
+
+        /**
+         * Saves the password
+         */
+        user.save(function(err, updatedUser) {
+          if (err)
+          {
+            console.log(err);
+            const updatedUserMongodbErrorResponse = new ErrorResponse(500, 'There was a problem when saving your password', err);
+            res.status(500).send(updatedUserMongodbErrorResponse.toObject());
+          }
+          /**
+           * Returns the updated user back to the system
+           */
+          else
+          {
+            console.log(updatedUser);
+            const updatedPasswordResponse = new BaseResponse(200, 'Password Successfully Saved', updatedUser);
+            res.json(updatedPasswordResponse.toObject());
+          }
+        })
+      }
+    })
+  }
+  catch (e)
+  {
+    console.log(e);
+    const resetPasswordCatchError = new ErrorResponse(500, 'Internal Server Error', e.message);
+    res.status(500).send(resetPasswordCatchError.toObject());
+  }
+})
+
 module.exports = router;
