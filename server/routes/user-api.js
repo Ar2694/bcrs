@@ -238,6 +238,31 @@ router.delete('/:id', async (req, res) => {
  * FindSelectedSecurityQuestions API
  * http://localhost:3000/api/users/:username/security-questions
  */
+router.get('/:username/security-questions', async(req,res) => {
+  try{
+    //Find the user selected security questions
+    User.findOne({'userName': req.params.userName}, function(err, user){
+      //Check for any internal server errors
+      if(err){
+        console.log(err);
+        const findSelectedSecurityQuestionsMongodbErrorResponse = new ErrorResponse('500', 'Internal server error', err);
+        res.status(500).send(findSelectedSecurityQuestionsMongodbErrorResponse.toObject());
+      }
+      else{
+        //Send the user object and response.
+        console.log(user);
+        const findSelectedSecurityQuestionsResponse = new BaseResponse('200', 'Query successful', user.selectedSecurityQuestions);
+        res.json(findSelectedSecurityQuestionsResponse.toObject());
+      }
+    })
+  }catch(e){
+    //Catch any errors
+    console.log(e);
+    const findSelectedSecurityQuestionsCatchErrorResponse = new ErrorResponse('500', 'Internal server error', e.message);
+    res.status(500).send(findSelectedSecurityQuestionsCatchErrorResponse.toObject());
+
+  }
+});
 
 /**
  * FindUserRole API
