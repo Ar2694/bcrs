@@ -24,6 +24,7 @@ import { SecurityQuestionDetailsComponent } from './pages/security-question-deta
 import { SecurityQuestionCreateComponent } from './pages/security-question-create/security-question-create.component';
 import { AboutComponent } from './pages/about/about.component';
 import { ContactComponent } from './pages/contact/contact.component';
+import { RegisterComponent } from './pages/register/register.component';
 
 // These are the paths added to the routes array
 // Each of these path will take you to the designated component
@@ -35,6 +36,14 @@ const routes: Routes = [
       {
         path: '',
         component: HomeComponent
+      },
+      {
+        path: 'about',
+        component: AboutComponent
+      },
+      {
+        path: 'contact',
+        component: ContactComponent
       },
       {
         path: 'users',
@@ -59,14 +68,6 @@ const routes: Routes = [
       {
         path: 'security-questions/create/new',
         component: SecurityQuestionCreateComponent
-      },
-      {
-        path: 'about',
-        component: AboutComponent
-      },
-      {
-        path: 'contact',
-        component: ContactComponent
       }
     ],
     canActivate: [AuthGuard]
@@ -78,6 +79,10 @@ const routes: Routes = [
       {
         path: 'signin',
         component: SigninComponent
+      },
+      {
+        path: 'register',
+        component: RegisterComponent
       }
     ]
   }
