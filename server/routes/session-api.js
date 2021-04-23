@@ -161,6 +161,30 @@ router.post('/register', async(req, res) => {
  */
  router.get('/verify/users/:username', async(req, res) => {
 
+// loops through the list of users to make sure it is the correct one
+  try
+  {
+    User.findOne({'username': req.params}, function (err, user)
+    {
+      if (err)
+      {
+        console.log(err);
+        const verifyUserMongodbErrorResponse = new ErrorResponse('500', 'Internal Server Error', err);
+        res.status(500).send(verifyUserMongodbErrorResponse.toObject());
+      }
+      else{
+        console.log(err);
+        const verifyUserResponse = new  BaseResponse('200', 'Query Successful', user);
+        res.json(verifyUserResponse.toObject());
+      }
+    })
+  }
+  catch (e)
+  {
+    console.log(e);
+    const verifyUserCatchErrorResponse = new ErrorResponse ('500', 'Internal Server Error', e.message);
+    res.status(500).send(verifyUserCatchErrorResponse.toObject());
+  }
 });
 
 
