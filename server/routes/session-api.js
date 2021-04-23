@@ -187,9 +187,6 @@ router.post('/register', async(req, res) => {
   }
 });
 
-
-
-
 /**
  * Verify Security Questions
  */
