@@ -86,6 +86,71 @@ router.post('/signin', async(req, res) => {
  * Register
  */
 router.post('/register', async(req, res) => {
+  try
+  {
+    User.findOne({'username': req.body.username}, function(err, user)
+    {
+      if (err)
+      {
+        console.log(err);
+        const registerUserMongodbErrorResponse = new ErrorResponse('500', 'Internal Server Error', err);
+        res.status(500).send(registerUserMongodbErrorResponse.toObject());
+      }
+      else
+      {
+        if(!user)
+        {
+          let hashedPassword = bcrypt.hashSync(req.body.password, saltRounds); // this will hash the password
+          standardRole = {
+            role: 'standard'
+          }
+
+          // this is going to be the user subject
+          let registeredUser = {
+            username: req.body.username,
+            password: hashedPassword,
+            firstname: req.body.firstname,
+            lastname: req.body.lastname,
+            phoneNumber: req.body.phoneNumber,
+            address: req.body.address,
+            email: req.body.email,
+            role: standardRole,
+            selectedSecurityQuestions: req.body.selectedSecurityQuestions
+          };
+
+          User.create(registeredUser, function(err, newUser)
+          {
+            if (err)
+            {
+              console.log(err);
+              const newUserMongodbErrorResponse = new ErrorResponse ('500', 'Internal Server Error', err);
+              res.status(500).send(newUserMongodbErrorResponse.toObject());
+            }
+            else
+            {
+              console.log(newUser);
+              const registeredUserResponse = new BaseResponse('200', 'Query Successful', newUser);
+              res.json(registeredUserResponse.toObject());
+            }
+
+          })
+        }
+        else
+        {
+          console.log('The provided username already exists in our systems');
+          const userAlreadyExistsErrorResponse = new ErrorResponse ('500', 'User Already Exists', err);
+          res.status(500).send(userAlreadyExistsErrorResponse.toObject());
+        }
+
+      }
+
+    })
+  } catch (e)
+  {
+    console.log(e);
+    const registerUserCatchErrorResponse = new ErrorResponse ('500', 'Internal Server Error', e.message);
+    res.status(500).send(registerUserCatchErrorResponse.toObject());
+  }
 
 });
 
@@ -96,6 +161,30 @@ router.post('/register', async(req, res) => {
  */
  router.get('/verify/users/:username', async(req, res) => {
 
+// loops through the list of users to make sure it is the correct one
+  try
+  {
+    User.findOne({'username': req.params}, function (err, user)
+    {
+      if (err)
+      {
+        console.log(err);
+        const verifyUserMongodbErrorResponse = new ErrorResponse('500', 'Internal Server Error', err);
+        res.status(500).send(verifyUserMongodbErrorResponse.toObject());
+      }
+      else{
+        console.log(err);
+        const verifyUserResponse = new  BaseResponse('200', 'Query Successful', user);
+        res.json(verifyUserResponse.toObject());
+      }
+    })
+  }
+  catch (e)
+  {
+    console.log(e);
+    const verifyUserCatchErrorResponse = new ErrorResponse ('500', 'Internal Server Error', e.message);
+    res.status(500).send(verifyUserCatchErrorResponse.toObject());
+  }
 });
 
 
