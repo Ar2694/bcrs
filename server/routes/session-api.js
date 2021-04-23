@@ -193,7 +193,7 @@ router.post('/register', async(req, res) => {
  router.post('/verify/users/:username/security-questions', async(req, res) => {
   try{
     //Find the user security question and answers.
-    User.findOne({'userName': req.params.username}, function(err,user){
+    User.findOne({'username': req.params.username}, function(err,user){
       //Check for error
       if(err){
         const verifySecurityQuestionsMongodbErrorResponse = new ErrorResponse('500', 'Internal server error', err);
@@ -204,15 +204,15 @@ router.post('/register', async(req, res) => {
         console.log(user);
         const selectedSecurityQuestionOne = user.selectedSecurityQuestions.find(q => q.questionText === req.body.questionText1);
         const selectedSecurityQuestionTwo = user.selectedSecurityQuestions.find(q2 => q2.questionText === req.body.questionText2);
-        const selectedSecurityQuestionThree = user.selectedSecurityQuestions.find(q3 => q3.questionText === req.body.questionText1);
-    
+        const selectedSecurityQuestionThree = user.selectedSecurityQuestions.find(q3 => q3.questionText === req.body.questionText3);
+
         //Check if each security answers are valid.
         if(selectedSecurityQuestionOne && selectedSecurityQuestionTwo && selectedSecurityQuestionThree){
-          console.log(`User ${user.userName} answered their security questions correctly`);
-          const validSecurityQuestionsReponse = new BaseResponse('200', 'success', user);
-          res.json(validSecurityQuestionsReponse.toObject());
+          console.log(`User ${user.username} answered their security questions correctly`);
+          const validSecurityQuestionsResponse = new BaseResponse('200', 'success', user);
+          res.json(validSecurityQuestionsResponse.toObject());
         }else{
-          console.log(`User ${user.userName} did not answer their security questions correctly`);
+          console.log(`User ${user.username} did not answer their security questions correctly`);
           const invalidSecurityQuestionsResponse = new BaseResponse('200', 'error', user);
           res.json(invalidSecurityQuestionsResponse.toObject());
         }
@@ -258,7 +258,7 @@ router.post('/users/:username/reset-password', async(req, res) => {
         /**
          * Hashing the password
          */
-        let hashedPassword = bcrypt.hashSync(password, saltRound);
+        let hashedPassword = bcrypt.hashSync(password, saltRounds);
 
         user.set({ password: hashedPassword });
 

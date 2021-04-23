@@ -47,6 +47,11 @@ import { MatMenuModule } from '@angular/material/menu';
 import {MatTableModule} from '@angular/material/table';
 import { MatListModule } from '@angular/material/list';
 import { MatStepperModule } from '@angular/material/stepper';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { ErrorComponent } from './pages/error/error.component';
+import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
+import { VerifyUsernameComponent } from './pages/verify-username/verify-username.component';
+import { VerifySecurityQuestionsComponent } from './pages/verify-security-questions/verify-security-questions.component';
 
 
 @NgModule({
@@ -65,7 +70,12 @@ import { MatStepperModule } from '@angular/material/stepper';
     DeleteRecordDialogComponent,
     AboutComponent,
     ContactComponent,
-    RegisterComponent
+    RegisterComponent,
+    NotFoundComponent,
+    ErrorComponent,
+    ResetPasswordComponent,
+    VerifyUsernameComponent,
+    VerifySecurityQuestionsComponent
   ],
   imports: [
     BrowserModule,
