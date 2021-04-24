@@ -101,18 +101,10 @@ const routes: Routes = [
         component: ResetPasswordComponent
       },
       {
-        path: 'not-found',
+        path: '404',
         component: NotFoundComponent
       }
     ]
-  },
-  {
-     path: 'signin',
-     component: SigninComponent
-  },
-  {
-    path: '**',
-    redirectTo: 'session/not-found'
   }
 ];
 
