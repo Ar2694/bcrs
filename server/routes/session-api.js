@@ -206,8 +206,12 @@ router.post('/register', async(req, res) => {
         const selectedSecurityQuestionTwo = user.selectedSecurityQuestions.find(q2 => q2.questionText === req.body.questionText2);
         const selectedSecurityQuestionThree = user.selectedSecurityQuestions.find(q3 => q3.questionText === req.body.questionText3);
 
+        const isValidAnswerOne = selectedSecurityQuestionOne.answerText === req.body.answerText1;
+        const isValidAnswerTwo = selectedSecurityQuestionTwo.answerText== req.body.answerText2;
+        const isValidAnswerThree = selectedSecurityQuestionThree.answerText = req.body.answerText3;
+
         //Check if each security answers are valid.
-        if(selectedSecurityQuestionOne && selectedSecurityQuestionTwo && selectedSecurityQuestionThree){
+        if(isValidAnswerOne && isValidAnswerTwo && isValidAnswerThree){
           console.log(`User ${user.username} answered their security questions correctly`);
           const validSecurityQuestionsResponse = new BaseResponse('200', 'success', user);
           res.json(validSecurityQuestionsResponse.toObject());
