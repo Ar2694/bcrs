@@ -21,15 +21,6 @@
   font-size: 80%;
 }
 
-input[type=text], input[type=password] {
-
-  padding: 8px 50px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-}
-
 .forgot-password-link{
   float: right;
   cursor: pointer;

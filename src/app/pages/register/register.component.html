@@ -7,7 +7,7 @@
     <!-- error message -->
     <mat-card *ngIf="errorMessage" class="mat-elevation-z0" style="width: 75%;">
       <mat-card-content>
-        <div class="msg-error" style="font-weight: lighter;">
+        <div style="font-weight: lighter;">
           {{ errorMessage }}
           <br>
         </div>
@@ -15,7 +15,7 @@
     </mat-card>
 
     <!-- Start of the stepper for account registration -->
-    <form id="regForm" [formGroup]="registrationForm">
+    <form [formGroup]="registrationForm">
       <mat-card-content fxLayout="column" fxLayoutGap="10px">
         <mat-horizontal-stepper #stepper>
           <!-- Step 1 - contact information -->
@@ -23,6 +23,7 @@
                     [stepControl]="registrationForm.get('contactInformation')">
             <ng-template matStepLabel>Contact Information</ng-template>
 
+            <!-- content inside contact information -->
             <mat-list>
               <mat-list-item>
                 <mat-form-field fxFlex>
@@ -51,6 +52,7 @@
               </mat-list-item>
 
               <br><br><br>
+
               <mat-list-item>
                 <mat-form-field fxFlex>
                   <textarea matInput formControlName="address"
@@ -61,6 +63,7 @@
             </mat-list>
 
             <br><br><br>
+
             <div fxLayoutAlign="end" fxFlex>
               <button mat-raised-button color="accent" matStepperNext>
                 Next
@@ -69,8 +72,8 @@
           </mat-step>
 
           <!-- Step 2 - choosing security questions and writing answers -->
-          <mat-step formGroupName="SecurityQuestion"
-                    [stepControl]="registrationForm.get('SecurityQuestion')">
+          <mat-step formGroupName="SecurityQuestions"
+                    [stepControl]="registrationForm.get('SecurityQuestions')">
             <ng-template matStepLabel>Security Questions</ng-template>
 
             <mat-list>
@@ -78,7 +81,7 @@
                 <mat-form-field fxFlex>
                   <mat-select formControlName="SecurityQuestion1"
                               placeholder="Security question">
-                    <mat-option *ngFor="let question of SecurityQuestion"
+                    <mat-option *ngFor="let question of SecurityQuestions"
                                 [value]="question.text">
                         {{ question.text }}
                     </mat-option>
@@ -88,7 +91,7 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <mat-form-field fxFlex>
                   <input matInput
-                         formControlName="securityAnswer1"
+                         formControlName="AnswerToSecurityQuestion1"
                          placeholder="Answer 1"/>
                 </mat-form-field>
               </mat-list-item>
@@ -97,7 +100,7 @@
                 <mat-form-field fxFlex>
                   <mat-select formControlName="SecurityQuestion2"
                               placeholder="Security question">
-                    <mat-option *ngFor="let question of SecurityQuestion"
+                    <mat-option *ngFor="let question of SecurityQuestions"
                                 [value]="question.text">
                         {{ question.text }}
                     </mat-option>
@@ -107,7 +110,7 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <mat-form-field fxFlex>
                   <input matInput
-                         formControlName="securityAnswer2"
+                         formControlName="AnswerToSecurityQuestion2"
                          placeholder="Answer 2"/>
                 </mat-form-field>
               </mat-list-item>
@@ -116,7 +119,7 @@
                 <mat-form-field fxFlex>
                   <mat-select formControlName="SecurityQuestion3"
                               placeholder="Security question">
-                    <mat-option *ngFor="let question of SecurityQuestion"
+                    <mat-option *ngFor="let question of SecurityQuestions"
                                 [value]="question.text">
                         {{ question.text }}
                     </mat-option>
@@ -126,7 +129,7 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <mat-form-field fxFlex>
                   <input matInput
-                         formControlName="securityAnswer3"
+                         formControlName="AnswerToSecurityQuestion3"
                          placeholder="Answer 3"/>
                 </mat-form-field>
               </mat-list-item>

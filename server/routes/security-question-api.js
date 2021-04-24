@@ -214,8 +214,6 @@ try{
   res.status(500).send(deleteSecurityQuestionCatchErrorResponse.toObject());
 }
 });
-/**
- * FindSecurityQuestionByIds
-*/
+
 
 module.exports = router;

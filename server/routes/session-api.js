@@ -164,7 +164,7 @@ router.post('/register', async(req, res) => {
 // loops through the list of users to make sure it is the correct one
   try
   {
-    User.findOne({'username': req.params}, function (err, user)
+    User.findOne({'username': req.params.username}, function (err, user)
     {
       if (err)
       {

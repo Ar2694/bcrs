@@ -14,7 +14,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-
+import { SecurityQuestion } from 'src/app/shared/security-question.interface';
 
 @Component({
   selector: 'app-register',
@@ -23,7 +23,7 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class RegisterComponent implements OnInit {
 
-  SecurityQuestion: any;
+  SecurityQuestions: SecurityQuestion[];
   form: FormGroup;
   registrationForm: FormGroup;
   errorMessage: string;
@@ -32,7 +32,7 @@ export class RegisterComponent implements OnInit {
               private fb: FormBuilder, private cookieService: CookieService) {
 
     this.http.get('/api/security-questions').subscribe(res => {
-      this.SecurityQuestion = res['data'];
+      this.SecurityQuestions = res['data'];
     }, err => {
       console.log(err);
     })
@@ -49,8 +49,8 @@ export class RegisterComponent implements OnInit {
        */
       contactInformation: new FormGroup({
         firstname: new FormControl(null, Validators.required),
-        lastname: new FormGroup(null, Validators.required),
-        phoneNumber: new FormGroup(null, Validators.required),
+        lastname: new FormControl(null, Validators.required),
+        phoneNumber: new FormControl(null, Validators.required),
         address: new FormControl(null, Validators.required),
         email: new FormControl(null, Validators.required),
       }),
@@ -58,17 +58,17 @@ export class RegisterComponent implements OnInit {
        * security questions and answers for user to choose
        * when registering for a new account
        */
-      SecurityQuestion: new FormGroup({
-        SecurityQuestion1: new FormGroup(null, Validators.required),
-        SecurityQuestion2: new FormGroup(null, Validators.required),
-        SecurityQuestion3: new FormGroup(null, Validators.required),
-        answerToSecurityQuestion1: new FormControl(null, Validators.required),
-        answerToSecurityQuestion2: new FormControl(null, Validators.required),
-        answerToSecurityQuestion3: new FormControl(null, Validators.required),
+      SecurityQuestions: new FormGroup({
+        SecurityQuestion1: new FormControl(null, Validators.required),
+        SecurityQuestion2: new FormControl(null, Validators.required),
+        SecurityQuestion3: new FormControl(null, Validators.required),
+        AnswerToSecurityQuestion1: new FormControl(null, Validators.required),
+        AnswerToSecurityQuestion2: new FormControl(null, Validators.required),
+        AnswerToSecurityQuestion3: new FormControl(null, Validators.required),
       }),
       credentials: new FormGroup({
-        username: new FormGroup(null, Validators.required),
-        password: new FormGroup(null, Validators.required)
+        username: new FormControl(null, Validators.required),
+        password: new FormControl(null, Validators.required)
       })
     });
   }
@@ -80,7 +80,7 @@ export class RegisterComponent implements OnInit {
    */
   register(form) {
     const contactInformation = form.contactInformation;
-    const SecurityQuestion = form.SecurityQuestion1;
+    const SecurityQuestions = form.SecurityQuestions;
     const credentials = form.credentials;
 
     /**
@@ -88,16 +88,16 @@ export class RegisterComponent implements OnInit {
      */
     const selectedSecurityQuestions = [
       {
-        questionText: SecurityQuestion.SecurityQuestion1,
-        answerText: SecurityQuestion.answerToSecurityQuestion1
+        questionText: SecurityQuestions.SecurityQuestion1,
+        answerText: SecurityQuestions.AnswerToSecurityQuestion1
       },
       {
-        questionText: SecurityQuestion.SecurityQuestion2,
-        answerText: SecurityQuestion.answerToSecurityQuestion2
+        questionText: SecurityQuestions.SecurityQuestion2,
+        answerText: SecurityQuestions.AnswerToSecurityQuestion2
       },
       {
-        questionText: SecurityQuestion.SecurityQuestion3,
-        answerText: SecurityQuestion.answerToSecurityQuestion3
+        questionText: SecurityQuestions.SecurityQuestion3,
+        answerText: SecurityQuestions.AnswerToSecurityQuestion3
       }
     ];
 

@@ -31,7 +31,11 @@ import { ErrorInterceptor } from './shared/error.interceptor';
 import { AboutComponent } from './pages/about/about.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { RegisterComponent } from './pages/register/register.component';
-
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { ErrorComponent } from './pages/error/error.component';
+import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
+import { VerifyUsernameComponent } from './pages/verify-username/verify-username.component';
+import { VerifySecurityQuestionsComponent } from './pages/verify-security-questions/verify-security-questions.component';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -47,11 +51,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import {MatTableModule} from '@angular/material/table';
 import { MatListModule } from '@angular/material/list';
 import { MatStepperModule } from '@angular/material/stepper';
-import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { ErrorComponent } from './pages/error/error.component';
-import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
-import { VerifyUsernameComponent } from './pages/verify-username/verify-username.component';
-import { VerifySecurityQuestionsComponent } from './pages/verify-security-questions/verify-security-questions.component';
+import { MatSelectModule } from '@angular/material/select';
+
 
 
 @NgModule({
@@ -95,7 +96,8 @@ import { VerifySecurityQuestionsComponent } from './pages/verify-security-questi
     MatMenuModule,
     MatTableModule,
     MatStepperModule,
-    MatListModule
+    MatListModule,
+    MatSelectModule
 
   ],
   providers: [

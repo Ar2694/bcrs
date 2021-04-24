@@ -22,11 +22,12 @@
       <mat-card-content>
         <!-- if an error occurs the bellow message will be displayed-->
         <small style="color: #df546a;" *ngIf='errorMessage'> {{ errorMessage }}<br></small>
+
         <mat-card class="mat-elevation-z0">
-          <form [formGroup]='signinForm' (ngSubmit)='signin(); signinForm.reset()'>
+          <form [formGroup]='signinForm' (ngSubmit)='signin(); signinForm.reset()' #loginForm='ngForm'>
 
             <!-- Username and password input fields -->
-            <mat-card-content fxLayout='column'>
+            <mat-card-content fxLayout='column' fxLayoutGap='10px'>
               <mat-form-field >
                 <input type="text" matInput fxFlex [formControl]="signinForm.controls['username']" placeholder='Username' />
               </mat-form-field>

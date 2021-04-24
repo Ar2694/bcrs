@@ -25,6 +25,9 @@ import { SecurityQuestionCreateComponent } from './pages/security-question-creat
 import { AboutComponent } from './pages/about/about.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
+import { VerifyUsernameComponent } from './pages/verify-username/verify-username.component';
+import { VerifySecurityQuestionsComponent } from './pages/verify-security-questions/verify-security-questions.component';
 
 // These are the paths added to the routes array
 // Each of these path will take you to the designated component
@@ -83,6 +86,18 @@ const routes: Routes = [
       {
         path: 'register',
         component: RegisterComponent
+      },
+      {
+        path: 'forgot',
+        component: VerifyUsernameComponent
+      },
+      {
+        path: 'verify-security-questions',
+        component: VerifySecurityQuestionsComponent
+      },
+      {
+        path: 'reset-password',
+        component: ResetPasswordComponent
       }
     ]
   }

@@ -1,6 +1,13 @@
+/*
+* Main container styling
+*/
 .main-container {
-  margin-top: 8%;
+  margin-top: 5%;
 }
+
+/*
+* Registration form container styling
+*/
 .registration-form {
   width: 65%;
   margin-left: 18%;
