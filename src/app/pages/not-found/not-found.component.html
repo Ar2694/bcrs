@@ -1,1 +1,33 @@
-<p>not-found works!</p>
+<!--
+/*============================================;
+Title: nodebucket;
+Author: Professor Krasso ;
+Date: 2 April 2021;
+Modified By: Douglas Jenkins;
+Description: built remaining pages
+;===========================================*/
+-->
+<div fxLayout="column">
+  <mat-card fxFlex style="margin-top: 5%; margin-left: 20%;" class="mat-elevation-z0">
+
+    <!-- Not Found and a image shows up -->
+    <mat-card-title>
+      <img src="./assets/error.png"/><br>
+      <p class="source"><a href='https://pngtree.com/so/website-tips'>Image from Png Tree</a></p>
+    </mat-card-title>
+
+    <br>
+    <mat-card-content>
+      <p><span class="whoops">Error!!!</span>
+      <br>We could not find the page you were looking for. Click the button below to return to the Sign In page</p>
+    </mat-card-content>
+
+    <br>
+
+    <!-- a button taking user back to the main page -->
+    <mat-card-content style="text-align: center; padding-left: 20%;">
+      <button mat-raised-button color="accent" routerLink="/">Return</button>
+    </mat-card-content>
+  </mat-card>
+</div>
+

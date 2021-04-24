@@ -28,6 +28,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 import { VerifyUsernameComponent } from './pages/verify-username/verify-username.component';
 import { VerifySecurityQuestionsComponent } from './pages/verify-security-questions/verify-security-questions.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 // These are the paths added to the routes array
 // Each of these path will take you to the designated component
@@ -98,8 +99,20 @@ const routes: Routes = [
       {
         path: 'reset-password',
         component: ResetPasswordComponent
+      },
+      {
+        path: 'not-found',
+        component: NotFoundComponent
       }
     ]
+  },
+  {
+     path: 'signin',
+     component: SigninComponent
+  },
+  {
+    path: '**',
+    redirectTo: 'session/not-found'
   }
 ];
 
