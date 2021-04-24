@@ -241,7 +241,7 @@ router.delete('/:id', async (req, res) => {
 router.get('/:username/security-questions', async(req,res) => {
   try{
     //Find the user selected security questions
-    User.findOne({'userName': req.params.userName}, function(err, user){
+    User.findOne({'username': req.params.username}, function(err, user){
       //Check for any internal server errors
       if(err){
         console.log(err);
