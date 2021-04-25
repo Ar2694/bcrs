@@ -28,9 +28,10 @@ export class VerifySecurityQuestionsComponent implements OnInit {
   form: FormGroup;
 
   constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient, private fb: FormBuilder) {
+    this.username = this.route.snapshot.queryParamMap.get('username');
     console.log(this.username);
 
-    this.http.get('/api/users' + this.username + '/security-questions').subscribe(res => {
+    this.http.get('/api/users/' + this.username + '/security-questions').subscribe(res => {
       this.selectedSecurityQuestions = res['data'];
       console.log(this.selectedSecurityQuestions);
       console.log(res);
