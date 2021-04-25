@@ -256,7 +256,7 @@ router.get('/:username/security-questions', async(req,res) => {
       }
     })
   }catch(e){
-    //Catch any errors
+    //Catch any errors 
     console.log(e);
     const findSelectedSecurityQuestionsCatchErrorResponse = new ErrorResponse('500', 'Internal server error', e.message);
     res.status(500).send(findSelectedSecurityQuestionsCatchErrorResponse.toObject());
