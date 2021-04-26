@@ -52,6 +52,7 @@ import {MatTableModule} from '@angular/material/table';
 import { MatListModule } from '@angular/material/list';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatSelectModule } from '@angular/material/select';
+import { InternalServerErrorComponent } from './pages/internal-server-error/internal-server-error.component';
 
 
 
@@ -76,7 +77,8 @@ import { MatSelectModule } from '@angular/material/select';
     ErrorComponent,
     ResetPasswordComponent,
     VerifyUsernameComponent,
-    VerifySecurityQuestionsComponent
+    VerifySecurityQuestionsComponent,
+    InternalServerErrorComponent
   ],
   imports: [
     BrowserModule,

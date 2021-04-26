@@ -1,0 +1,16 @@
+.about{
+    width: 80%;
+    display: inline-block;
+}
+.about p{
+    font-size: 16px;
+    text-indent: 40px;
+}
+.icon-container{
+    width: 20%;
+    display: inline-block;
+}
+.icon-container .mat-icon{
+font-size: 140px;
+   
+}

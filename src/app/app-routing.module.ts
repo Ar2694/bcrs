@@ -29,6 +29,7 @@ import { ResetPasswordComponent } from './pages/reset-password/reset-password.co
 import { VerifyUsernameComponent } from './pages/verify-username/verify-username.component';
 import { VerifySecurityQuestionsComponent } from './pages/verify-security-questions/verify-security-questions.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { InternalServerErrorComponent } from './pages/internal-server-error/internal-server-error.component';
 
 // These are the paths added to the routes array
 // Each of these path will take you to the designated component
@@ -105,7 +106,11 @@ const routes: Routes = [
         component: NotFoundComponent
       }
     ]
-  }
+  },
+  {
+    path: 'internal-server-error',
+    component: InternalServerErrorComponent
+  },
 ];
 
 @NgModule({
