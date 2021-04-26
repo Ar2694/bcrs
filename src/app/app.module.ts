@@ -32,7 +32,6 @@ import { AboutComponent } from './pages/about/about.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { ErrorComponent } from './pages/error/error.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 import { VerifyUsernameComponent } from './pages/verify-username/verify-username.component';
 import { VerifySecurityQuestionsComponent } from './pages/verify-security-questions/verify-security-questions.component';
@@ -74,7 +73,6 @@ import { InternalServerErrorComponent } from './pages/internal-server-error/inte
     ContactComponent,
     RegisterComponent,
     NotFoundComponent,
-    ErrorComponent,
     ResetPasswordComponent,
     VerifyUsernameComponent,
     VerifySecurityQuestionsComponent,
