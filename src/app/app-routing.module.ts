@@ -111,6 +111,10 @@ const routes: Routes = [
     path: 'internal-server-error',
     component: InternalServerErrorComponent
   },
+  {
+    path: '**',
+    redirectTo: 'session/404'
+  }
 ];
 
 @NgModule({
