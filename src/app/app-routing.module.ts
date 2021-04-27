@@ -104,13 +104,14 @@ const routes: Routes = [
       {
         path: '404',
         component: NotFoundComponent
+      },
+      {
+        path: '500',
+        component: InternalServerErrorComponent
       }
     ]
   },
-  {
-    path: 'internal-server-error',
-    component: InternalServerErrorComponent
-  },
+
 ];
 
 @NgModule({
