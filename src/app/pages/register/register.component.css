@@ -15,6 +15,7 @@
 }
 
 .password-requirements {
+  color: red;
   font-size: 10px;
   margin-left: 2%;
 }

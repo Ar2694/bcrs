@@ -51,7 +51,8 @@ export class RegisterComponent implements OnInit {
       contactInformation: new FormGroup({
         firstname: new FormControl(null, Validators.required),
         lastname: new FormControl(null, Validators.required),
-        phoneNumber: new FormControl(null, Validators.required),
+        phoneNumber: new FormControl(null, Validators.compose([Validators.required,
+          Validators.pattern('^[0-9]*$')])),
         address: new FormControl(null, Validators.required),
         email: new FormControl(null, Validators.required),
       }),
@@ -69,7 +70,8 @@ export class RegisterComponent implements OnInit {
       }),
       credentials: new FormGroup({
         username: new FormControl(null, Validators.required),
-        password: new FormControl(null, Validators.required)
+        password: new FormControl(null, Validators.compose([Validators.required,
+          Validators.pattern('^(?=.*[a-z])(?=.*?[A-Z])(?=.*?[0-9]).{6,}$')]))
       })
     });
   }
