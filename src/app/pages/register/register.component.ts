@@ -28,6 +28,7 @@ export class RegisterComponent implements OnInit {
   registrationForm: FormGroup;
   errorMessage: string;
 
+
   constructor(private http: HttpClient, private router: Router,
               private fb: FormBuilder, private cookieService: CookieService) {
 
