@@ -111,7 +111,10 @@ const routes: Routes = [
       }
     ]
   },
-
+  {
+    path: '**',
+    redirectTo: 'session/404'
+  }
 ];
 
 @NgModule({
