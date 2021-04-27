@@ -68,6 +68,7 @@ router.get('/:id', async(req, res) => {
 
     SecurityQuestion.findOne({'_id': req.params.id}, function(err, securityQuestion){
 
+      //handles error within MongoDB
       if (err)
       {
         console.log(err);

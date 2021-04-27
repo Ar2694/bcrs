@@ -42,6 +42,7 @@ export class SecurityQuestionListComponent implements OnInit {
    *
    * @param recordId
    * Delete security question
+   * it will prompt before deleting
    */
   delete(recordId: string) {
     const dialogRef = this.dialog.open(DeleteRecordDialogComponent, {

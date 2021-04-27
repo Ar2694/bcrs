@@ -88,6 +88,7 @@ router.post('/signin', async(req, res) => {
 router.post('/register', async(req, res) => {
   try
   {
+    //find the user by username
     User.findOne({'username': req.body.username}, function(err, user)
     {
       if (err)
@@ -100,7 +101,8 @@ router.post('/register', async(req, res) => {
       {
         if(!user)
         {
-          let hashedPassword = bcrypt.hashSync(req.body.password, saltRounds); // this will hash the password
+          // this will hash the password
+          let hashedPassword = bcrypt.hashSync(req.body.password, saltRounds);
           standardRole = {
             role: 'standard'
           }
@@ -120,6 +122,7 @@ router.post('/register', async(req, res) => {
 
           User.create(registeredUser, function(err, newUser)
           {
+            // handles errors within mongoDB
             if (err)
             {
               console.log(err);
@@ -137,6 +140,7 @@ router.post('/register', async(req, res) => {
         }
         else
         {
+          //if username exists, this error will show
           console.log('The provided username already exists in our systems');
           const userAlreadyExistsErrorResponse = new ErrorResponse ('500', 'User Already Exists', err);
           res.status(500).send(userAlreadyExistsErrorResponse.toObject());
@@ -168,6 +172,7 @@ router.post('/register', async(req, res) => {
     {
       if (err)
       {
+        //if...else function to handle errors or successful queries
         console.log(err);
         const verifyUserMongodbErrorResponse = new ErrorResponse('500', 'Internal Server Error', err);
         res.status(500).send(verifyUserMongodbErrorResponse.toObject());

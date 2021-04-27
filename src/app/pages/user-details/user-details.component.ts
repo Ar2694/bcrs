@@ -33,12 +33,12 @@ export class UserDetailsComponent implements OnInit {
 
     this.userId = this.route.snapshot.paramMap.get('userId');
 
-    /**
-     *
-     */
     this.userService.findUserById(this.userId).subscribe(res => {
 
 
+      /**
+       *
+       */
       this.user = res.data;
       }, err => {
         console.log(err);
@@ -52,6 +52,9 @@ export class UserDetailsComponent implements OnInit {
       })
       }
 
+  /**
+   * user fields
+   */
   ngOnInit(): void {
     this.form = this.fb.group({
       username: [null, Validators.compose([Validators.required])],

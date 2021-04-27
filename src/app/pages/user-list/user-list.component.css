@@ -24,6 +24,9 @@
   padding-right: 30px;
 }
 
+/*
+  Style for smaller devices
+*/
 @media only screen and (max-width: 750px) {
   .user-list {
     margin-bottom: 15%;

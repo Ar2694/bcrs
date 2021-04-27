@@ -42,6 +42,9 @@ export class UserCreateComponent implements OnInit {
     })
   }
 
+  /**
+   * Creates a new user with seven (7) fields required
+   */
   createUser() {
     const newUser = {} as User;
     newUser.username = this.form.controls.username.value,

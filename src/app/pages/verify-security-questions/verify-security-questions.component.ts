@@ -31,6 +31,11 @@ export class VerifySecurityQuestionsComponent implements OnInit {
     this.username = this.route.snapshot.queryParamMap.get('username');
     console.log(this.username);
 
+    /**
+     * when valid username is entered, the three question this previously selected
+     * when creating an account will be get from the database
+     * so that the user can answer them before changing password.
+     */
     this.http.get('/api/users/' + this.username + '/security-questions').subscribe(res => {
       this.selectedSecurityQuestions = res['data'];
       console.log(this.selectedSecurityQuestions);
@@ -49,6 +54,9 @@ export class VerifySecurityQuestionsComponent implements OnInit {
     });
   }
 
+  /**
+   * Three security question gotten from database based on username
+   */
   ngOnInit() {
     this.form = this.fb.group({
       answerToSecurityQuestion1: [null, Validators.compose([Validators.required])],

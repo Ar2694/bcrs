@@ -20,6 +20,7 @@
       <form *ngIf="selectedSecurityQuestions" [formGroup]="form" (ngSubmit)="verifySecurityQuestions()" #usernameForm>
         <mat-card-content fxLayout="column">
 
+          <!-- Three questions with answer placeholder -->
           <mat-list>
             <mat-list-item>
               {{question1}} &nbsp; &nbsp;
