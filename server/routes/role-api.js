@@ -13,7 +13,8 @@ const express = require('express');
 const User = require('../models/user');
 const Role = require('../models/role');
 const BaseResponse = require('../services/base-response');
-const ErrorResponse = require('../services/error-response')
+const ErrorResponse = require('../services/error-response');
+const { update } = require('../models/user');
 
 
 //It defines router variables - configuration
@@ -22,7 +23,33 @@ const router = express.Router();
 /**
  * FindAll Role API
  */
-
+router.get('/', async(req, res) =>{
+  try{
+    //Find all roles
+    Role.find({})
+    .where('isDisabled')
+    .equals(false)
+    .exec(function(err, roles){
+      //Check for any errors
+      if(err){
+        console.log(err);
+        const findAllRolesMongodbErrorResponse = new ErrorResponse('500', 'Internal server error', err);
+        res.status(500).send(findAllRolesMongodbErrorResponse.toObject());
+      }
+      //Otherwise send a base response with the role object.
+      else{
+        console.log(roles);
+        const findAllRolesResponse = new BaseResponse('200', 'Query successfull', roles);
+        res.json(findAllRolesResponse);
+      }
+    })
+    //Catch any internal server errors.
+  }catch(e){
+    console.log(e);
+    const findAllRolesCatchErrorResponse = new ErrorResponse('500', 'Internal server error', e.message);
+    res.status(500).send(findAllRolesCatchErrorResponse.toObject());
+  }
+});
 /**
  * FindById Role API
  */
@@ -62,6 +89,47 @@ router.get('/:roleId', async(req, res) => {
 /**
  * UpdateRole Role API
  */
+router.put('/:roleId', async(req, res) => {
+  try{
+    //Find a specifc role and update the role.
+    Role.findOne({'_id': req.params.roleId}, function(err, role){
+      //Check for any internal server errors.
+      if(err){
+        console.log(err);
+        const updatedRoleMongodbErrorResponse = new ErrorResponse('500', 'Internal server error', err);
+        res.status(500).send(updatedRoleMongodbErrorResponse);
+      }
+      //Otherwise set the new role and then save into the database.
+      else{
+        console.log(role);
+        role.set({
+          text: req.body.text
+        });
+
+        role.save(function(err, updateRole){
+          //Check for any internal server error.
+          if(err){
+            console.log(err);
+            const updatedRoleMongodbErrorResponse = new ErrorResponse('500', 'Internal server error', err);
+            res.status(500).send(updatedRoleMongodbErrorResponse.toObject());
+          }
+          //Otherwise send a base response with updated role object.
+          else{
+            console.log(updateRole);
+            const updatedRoleResponse = new BaseResponse('200', 'Query successful', updatedRole);
+            res.json(updatedRoleResponse.toObject());
+          }
+        });
+      }
+    });
+  }
+  //Catch any internal server errors.
+  catch(e){
+    console.log(e);
+    const updateRoleCatchErrorReponse = new ErrorResponse('500', 'Internal server error', e.message);
+    res.status(500).send(updateRoleCatchErrorReponse.toObject());
+  }
+});
 
 /**
  * DeleteRole Role API
