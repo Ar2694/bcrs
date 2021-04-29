@@ -32,7 +32,7 @@ router.get('/:roleId', async(req, res) => {
     //Finds the role by id
     Role.findOne({'_id': req.params.roleId}, function(err, role) {
 
-      // if...else function to help handling error or successful queries
+      // if...else function to help handling error and  successful queries
       if (err)
       {
         console.log(err);

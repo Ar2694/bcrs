@@ -9,8 +9,8 @@
 */
 
 import { Component, OnInit } from '@angular/core';
-import { User } from './../../shared/user.interface';
-import { UserService } from './../../shared/user.service';
+import { User } from '../../shared/interfaces/user.interface';
+import { UserService } from '../../shared/services/user.service';
 import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 

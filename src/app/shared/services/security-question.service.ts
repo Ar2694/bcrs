@@ -3,8 +3,8 @@
 ; Title: security-question.service.ts
 ; Author: Professor Krasso
 ; Date:   16 April 2021
-; Modified by:
-; Description:
+; Modified by: Karina Alvarez
+; Description: security question service file
 ;===========================================
 */
 
@@ -12,7 +12,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { SecurityQuestion } from '../shared/security-question.interface'
+import { SecurityQuestion } from '../interfaces/security-question.interface'
 
 @Injectable({
   providedIn: 'root'
