@@ -35,6 +35,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 import { VerifyUsernameComponent } from './pages/verify-username/verify-username.component';
 import { VerifySecurityQuestionsComponent } from './pages/verify-security-questions/verify-security-questions.component';
+import { InternalServerErrorComponent } from './pages/internal-server-error/internal-server-error.component';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -51,8 +52,7 @@ import {MatTableModule} from '@angular/material/table';
 import { MatListModule } from '@angular/material/list';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatSelectModule } from '@angular/material/select';
-import { InternalServerErrorComponent } from './pages/internal-server-error/internal-server-error.component';
-
+import { ChartModule } from 'primeng/chart';
 
 
 @NgModule({
@@ -97,7 +97,8 @@ import { InternalServerErrorComponent } from './pages/internal-server-error/inte
     MatTableModule,
     MatStepperModule,
     MatListModule,
-    MatSelectModule
+    MatSelectModule,
+    ChartModule
 
   ],
   providers: [
