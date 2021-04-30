@@ -1,10 +1,10 @@
 /*
 ============================================
-; Title: role-list.component.ts
+; Title: role-details.component.ts
 ; Author: Professor Krasso
 ; Date:   29 April 2021
 ; Modified by: Karina Alvarez
-; Description: Role list
+; Description: Role details
 ;===========================================
 */
 
@@ -15,11 +15,11 @@ import { DeleteRecordDialogComponent } from 'src/app/shared/delete-record-dialog
 import { RoleService } from 'src/app/shared/services/role.service';
 
 @Component({
-  selector: 'app-role-list',
-  templateUrl: './role-list.component.html',
-  styleUrls: ['./role-list.component.css']
+  selector: 'app-role-details',
+  templateUrl: './role-details.component.html',
+  styleUrls: ['./role-details.component.css']
 })
-export class RoleListComponent implements OnInit {
+export class RoleDetailsComponent implements OnInit {
 
   roles: Role[];
   displayedColumns = ['role', 'functions']

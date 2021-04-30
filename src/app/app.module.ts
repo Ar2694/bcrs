@@ -36,6 +36,8 @@ import { ResetPasswordComponent } from './pages/reset-password/reset-password.co
 import { VerifyUsernameComponent } from './pages/verify-username/verify-username.component';
 import { VerifySecurityQuestionsComponent } from './pages/verify-security-questions/verify-security-questions.component';
 import { InternalServerErrorComponent } from './pages/internal-server-error/internal-server-error.component';
+import { RoleCreateComponent } from './pages/role-create/role-create.component';
+import { RoleDetailsComponent } from './pages/role-details/role-details.component';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -53,8 +55,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatSelectModule } from '@angular/material/select';
 import { ChartModule } from 'primeng/chart';
-import { RoleListComponent } from './pages/role-list/role-list.component';
-import { RoleCreateComponent } from './pages/role-create/role-create.component';
+
 
 
 @NgModule({
@@ -79,8 +80,8 @@ import { RoleCreateComponent } from './pages/role-create/role-create.component';
     VerifyUsernameComponent,
     VerifySecurityQuestionsComponent,
     InternalServerErrorComponent,
-    RoleListComponent,
-    RoleCreateComponent
+    RoleCreateComponent,
+    RoleDetailsComponent
   ],
   imports: [
     BrowserModule,
