@@ -273,5 +273,36 @@ router.get('/:username/security-questions', async(req,res) => {
  * FindUserRole API
  * http://localhost:3000/api/users/:username/role
  */
+router.get('/:username/role', async(req,res) => {
+  try
+  {
+    // finds the username and displays it
+    User.findOne({'username': req.params.username}, function(err, user)
+    {
+      if(err)
+      {
+        console.log(err);
+        const findUserRoleMongodbErrorResponse = new ErrorResponse('500', 'Internal Server Error', err);
+        res.status(500).send(findUserRoleMongodbErrorResponse.toObject());
+      }
+      else
+      {
+        //Send the user object and response.
+        console.log(user);
+        const findUserRoleResponse = new BaseResponse('200', 'Query Successful', user.role);
+        res.json(findUserRoleResponse.toObject());
+      }
+    })
+  }
+  catch(e)
+  {
+    //Catch any errors
+    console.log(e);
+    const findUserRoleCatchErrorResponse = new ErrorResponse('500', 'Internal server error', e.message);
+    res.status(500).send(findUserRoleCatchErrorResponse.toObject());
+
+  }
+});
+
 
 module.exports = router;

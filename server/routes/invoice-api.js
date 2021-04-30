@@ -20,7 +20,7 @@ const router = express.Router();
  */
 
 router.post('/:username', async(req, res)=>{
-    
+
     try{
         //Create new invoice object.
         const userName = req.params.username;
@@ -56,4 +56,63 @@ router.post('/:username', async(req, res)=>{
         const createInvoiceCatchErrorResponse = new ErrorResponse('500', 'Internal server error', e.message);
         res.status(500).send(createInvoiceCatchErrorResponse.toObject());
     }
+});
+
+/**
+ * FindPurchasesByService API
+ */
+router.get('/purchases-graph', async(req, res) =>
+{
+  try
+  {
+    Invoice.aggregate ([
+      // unwind un-nest objects so you can you can get a total count of each user
+      {
+        $unwind: '$lineItems'
+      },
+      {
+      // list the group the and separates them from title and price
+        $group:
+        {
+          '_id':
+          {
+            'title': '$lineItems.title',
+            'price': '$lineItems.price'
+          },
+          'count':
+          {
+            $sum: 1
+          }
+        }
+      },
+      {
+        // sorts through the titles
+        $sort:
+        {
+          '_id.title': 1
+        }
+      }
+    ], function(err, purchaseGraph)
+        {
+          if(err)
+          {
+            console.log(err);
+            const findPurchasesByServiceGraphMongodbErrorResponse = new ErrorResponse('500', 'Internal Server Error', err);
+            res.status(500).send(findPurchasesByServiceGraphMongodbErrorResponse.toObject());
+        }
+        //Otherwise send a base response with the invoice object
+        else
+        {
+            console.log(purchaseGraph);
+            const findPurchasesByServiceGraphResponse = new BaseResponse('200', 'Query Successful', purchaseGraph);
+            res.json(findPurchasesByServiceGraphResponse.toObject());
+        }
+    })
+  }
+    catch(e)
+  {
+      console.log(e);
+      const findPurchasesByServiceCatchErrorResponse = new ErrorResponse('500', 'Internal Server Error', e.message);
+      res.status(500).send(findPurchasesByServiceCatchErrorResponse.toObject());
+  }
 });

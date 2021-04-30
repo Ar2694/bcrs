@@ -85,6 +85,39 @@ router.get('/:roleId', async(req, res) => {
 /**
  * CreateRole Role API
  */
+router.post('/', async(req, res) => {
+  try
+  // sends the req to the body
+  {
+    const newRole = {
+      text: req.body.text
+    }
+    // tries to create the role and see if it is displayed properly
+    Role.create(newRole, function(err, role)
+    {
+      if (err)
+      {
+        console.log(err);
+        const createRoleMongodbErrorResponse = new ErrorResponse(500, 'Internal Server Error', err);
+        res.status(500).send(createRoleMongodbErrorResponse.toObject());
+      }
+      else
+      {
+        console.log(role);
+        const createRoleResponse = new BaseResponse(200, 'Query Successful', role);
+        res.json(createRoleResponse.toObject());
+      }
+    })
+  }
+  catch (e)
+  {
+    console.log(e);
+    const createRoleCatchErrorResponse = new ErrorResponse(500, 'Internal Server Error', e.message);
+    res.status(500).send(createRoleCatchErrorResponse.toObject());
+  }
+});
+
+
 
 /**
  * UpdateRole Role API
