@@ -1,0 +1,40 @@
+<!--
+/*
+============================================
+; Title:  role.create.component.html
+; Author: Professor Krasso
+; Date:   17 April 2021
+; Modified by: Arlix Sorto
+; Description: Role create page
+;===========================================
+*/
+-->
+<!--fxLayout column start-->
+<div fxLayout="column">
+    <!--mat-card start-->
+    <mat-card class="mat-elevation-z8">
+        <mat-card-title>Create Role</mat-card-title>
+        <br />
+        <!--Form start-->
+        <form [formGroup]="form" (ngSubmit)="create()" #roleForm>
+            <!--mat card content start-->
+            <mat-card-content>
+                <div fxLayout="column" fxLayoutGap="10px">
+                    <mat-form-field>
+                        <input matInput [formControl]="form.controls['text]" placeholder="Role" />
+                    </mat-form-field>
+                </div>
+            </mat-card-content>
+            <!--mat card content end-->
+        <br />
+        <mat-card-actions align="end">
+            <button mat-raised-button (click)="cancel()" color="warn">Cancel</button>
+            <button mat-raised-button color="accent">Submit</button>
+        </mat-card-actions>
+        </form>
+           <!--Form end-->
+    </mat-card>
+    <!--mat-card end-->
+  
+</div>
+<!--fxLayout column end-->

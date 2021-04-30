@@ -54,6 +54,7 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatSelectModule } from '@angular/material/select';
 import { ChartModule } from 'primeng/chart';
 import { RoleListComponent } from './pages/role-list/role-list.component';
+import { RoleCreateComponent } from './pages/role-create/role-create.component';
 
 
 @NgModule({
@@ -78,7 +79,8 @@ import { RoleListComponent } from './pages/role-list/role-list.component';
     VerifyUsernameComponent,
     VerifySecurityQuestionsComponent,
     InternalServerErrorComponent,
-    RoleListComponent
+    RoleListComponent,
+    RoleCreateComponent
   ],
   imports: [
     BrowserModule,
