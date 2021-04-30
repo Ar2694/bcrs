@@ -15,6 +15,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { CookieService } from 'ngx-cookie-service';
 import { LineItem } from 'src/app/shared/interfaces/line-item.interface';
+import { ServiceRepairItem } from 'src/app/shared/interfaces/service-repair-item.interface';
 import { InvoiceService } from 'src/app/shared/services/invoice.service';
 
 @Component({
@@ -25,7 +26,7 @@ import { InvoiceService } from 'src/app/shared/services/invoice.service';
 export class HomeComponent implements OnInit {
   form: FormGroup;
   username: string;
-  services: ServiceRepairItem[];
+  services: ServiceRepairItem
   lineItems: LineItem[];
 
   constructor(private cookieService: CookieService, private fb: FormBuilder, private dialog: MatDialog,
