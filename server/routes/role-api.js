@@ -14,7 +14,6 @@ const User = require('../models/user');
 const Role = require('../models/role');
 const BaseResponse = require('../services/base-response');
 const ErrorResponse = require('../services/error-response');
-const { update } = require('../models/user');
 
 
 //It defines router variables - configuration
@@ -50,6 +49,7 @@ router.get('/', async(req, res) =>{
     res.status(500).send(findAllRolesCatchErrorResponse.toObject());
   }
 });
+
 /**
  * FindById Role API
  */
