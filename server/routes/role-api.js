@@ -126,8 +126,8 @@ router.put('/:roleId', async(req, res) => {
   //Catch any internal server errors.
   catch(e){
     console.log(e);
-    const updateRoleCatchErrorReponse = new ErrorResponse('500', 'Internal server error', e.message);
-    res.status(500).send(updateRoleCatchErrorReponse.toObject());
+    const updateRoleCatchErrorResponse = new ErrorResponse('500', 'Internal server error', e.message);
+    res.status(500).send(updateRoleCatchErrorResponse.toObject());
   }
 });
 

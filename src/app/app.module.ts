@@ -53,6 +53,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatSelectModule } from '@angular/material/select';
 import { ChartModule } from 'primeng/chart';
+import { RoleListComponent } from './pages/role-list/role-list.component';
 
 
 @NgModule({
@@ -76,7 +77,8 @@ import { ChartModule } from 'primeng/chart';
     ResetPasswordComponent,
     VerifyUsernameComponent,
     VerifySecurityQuestionsComponent,
-    InternalServerErrorComponent
+    InternalServerErrorComponent,
+    RoleListComponent
   ],
   imports: [
     BrowserModule,

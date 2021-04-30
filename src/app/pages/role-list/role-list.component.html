@@ -1,0 +1,43 @@
+<div fxLayout="column" fxLayoutAlign="center center">
+	<mat-card class="mat-elevation-z0">
+
+    <!-- Card Title and Subtitle -->
+		<mat-card-title>Role Details</mat-card-title>
+		<br>
+    <mat-card-subtitle>
+      <button mat-button routerLink='/roles/create/new' color='primary'>
+        Create
+      </button>
+    </mat-card-subtitle>
+
+
+    <br>
+    <!-- Table of the roles that can be assigned to a user -->
+    <mat-card-content *gIf='roles'>
+      <table mat-table [dataSource]='roles'>
+        <ng-container matColumnDef='role'>
+          <th mat-header-cell *matHeaderCellDef> Role </th>
+          <td mat-cell *matCellDef='let element'> {{ element.text }} </td>
+        </ng-container>
+
+        <!-- Edit and delete functions -->
+        <ng-container matColumnDef='functions'>
+          <th mat-header-cell *matHeaderCellDef> Functions </th>
+          <td mat-cell *matCellDef='let element'>
+            <button mat-icon-button routerLink='/roles/{{element._id}}'>
+              <mat-icon color='accent'>Edit</mat-icon>
+            </button>
+            <button mat-icon-button (click)='delete{element._id, element.text}'>
+              <mat-icon color='accent'>Delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef='displayedColumns'></tr>
+        <tr mat-row *matRowDev='let row; columns; displayedColumns'></tr>
+
+      </table>
+    </mat-card-content>
+
+	</mat-card>
+</div>
