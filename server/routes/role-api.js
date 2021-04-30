@@ -219,14 +219,14 @@ router.delete('/:roleId', async(req, res) => {
           {
             if (users.length > 0)
             {
-              console.log(`Role <${role.text}> is already in use and cannot be deleted`);
-              const userRoleAlreadyInUseResponse = new BaseResponse(200, `Role <${role.text}> is already in use and cannot be deleted`, role);
+              console.log(`Role --${role.text}-- is already in use and cannot be deleted`);
+              const userRoleAlreadyInUseResponse = new BaseResponse(200, `Role --${role.text}-- is already in use and cannot be deleted`, role);
               res.json(userRoleAlreadyInUseResponse.toObject());
             }
             else
             //if no users found, role can be disabled
             {
-              console.log(`Role <${role.text}> is not an active role and can be safely removed`);
+              console.log(`Role --${role.text}-- is not an active role and can be safely removed`);
 
               role.set({
                 isDisabled: true
@@ -243,8 +243,8 @@ router.delete('/:roleId', async(req, res) => {
                 else
                 {
                   console.log(updatedRole);
-                  const roleDeletedResponse = new BaseResponse(200, `Role <${role.text}> has been successfully deleted`, updatedRole);
-                  res.json(roleDeletedResponse.toObject)
+                  const roleDeletedResponse = new BaseResponse(200, `Role --${role.text}-- has been successfully deleted`, updatedRole);
+                  res.json(roleDeletedResponse.toObject());
                 }
               })
             }
