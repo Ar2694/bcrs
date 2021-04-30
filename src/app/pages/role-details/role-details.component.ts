@@ -10,9 +10,10 @@
 
 //These are files being imported from external files
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { DeleteRecordDialogComponent } from 'src/app/shared/delete-record-dialog/delete-record-dialog.component';
 import { RoleService } from 'src/app/shared/services/role.service';
+import { Role } from 'src/app/shared/interfaces/role.interface';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-role-details',
@@ -20,51 +21,54 @@ import { RoleService } from 'src/app/shared/services/role.service';
   styleUrls: ['./role-details.component.css']
 })
 export class RoleDetailsComponent implements OnInit {
+  role: Role;
+  roleId: string;
+  form: FormGroup
 
-  roles: Role[];
-  displayedColumns = ['role', 'functions']
+  constructor(private route: ActivatedRoute, private roleService: RoleService, private fb: FormBuilder, private router: Router) {
+    this.roleId = this.route.snapshot.paramMap.get('roleId');
 
-  constructor(private dialog: MatDialog, private roleService: RoleService) {
     /**
-     * making a query to the database
+     * Finds role by ID and subscribes to it
      */
-    this.roleService.findAllRoles().subscribe(res => {
-      this.roles = res['data'];
+    this.roleService.findRolesById(this.roleId).subscribe(res => {
+      this.role = res['data'];
     }, err => {
       console.log(err);
-    })
-  }
-
-  ngOnInit(): void {
+    }, () => {
+      console.log(this.role.text + 'response');
+      this.form.controls['text'].setValue(this.role.text);
+    });
   }
 
   /**
-   *
-   * @param roleId
-   * @param text
-   * ensuring user wants to delete the role before completing request
+   * text represents the role name
    */
-  delete(roleId, text) {
-    const dialogRef = this.dialog.open(DeleteRecordDialogComponent, {
-      data: {
-        roleId,
-        dialogHeader: "Delete Record Dialog",
-        dialogBody: `Are you sure you want to delete role ${text}?`
-      },
-      disableClose: true,
-      width: '800'
+  ngOnInit() {
+    this.form = this.fb.group({
+      text: [null, Validators.compose([Validators.required])]
     });
-
-    /**
-     * If confirm, the role is deleted
-     */
-    dialogRef.afterClosed().subscribe(result => {
-      if (result === 'confirm') {
-        this.roleService.deleteRole(roleId).subscribe(res => {
-          console.log('Role deleted')
-          this.roles = this.roles.filter(role =>role._id != roleId)
-        })
-      }
-    })
   }
+
+  /**
+   * Saves the new updated role
+   */
+  save() {
+    const updateRole = {
+      text: this.form.controls['text'].value
+    } as Role;
+    this.roleService.updateRole(this.roleId, updateRole).subscribe(res => {
+      this.router.navigate(['/roles']);
+    }, err => {
+      console.log(err);
+    });
+  }
+
+  /**
+   * Cancel button
+   */
+  cancel() {
+    this.router.navigate(['/roles']);
+  }
+
 }
