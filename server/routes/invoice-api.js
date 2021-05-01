@@ -116,3 +116,5 @@ router.get('/purchases-graph', async(req, res) =>
       res.status(500).send(findPurchasesByServiceCatchErrorResponse.toObject());
   }
 });
+
+module.exports = router;

@@ -24,6 +24,7 @@ const SecurityQuestionAPI = require('./routes/security-question-api');
 const UserAPI = require('./routes/user-api');
 const SessionAPI = require('./routes/session-api');
 const RolesAPI  = require('./routes/role-api');
+const InvoicesAPI  = require('./routes/invoice-api');
 
 
 /**
@@ -65,6 +66,7 @@ app.use('/api/security-questions', SecurityQuestionAPI);
 app.use('/api/users', UserAPI);
 app.use('/api/session', SessionAPI);
 app.use('/api/roles', RolesAPI);
+app.use('/api/invoice', InvoicesAPI);
 
 /**
  * Create and start server
