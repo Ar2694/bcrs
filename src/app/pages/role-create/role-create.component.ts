@@ -10,6 +10,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Role } from 'src/app/shared/interfaces/role.interface';
 import { RoleService } from 'src/app/shared/services/role.service';
 
 @Component({
@@ -34,7 +35,7 @@ export class RoleCreateComponent implements OnInit {
     //Create new role object
     const newRole ={ 
       text: this.form.controls['text'].value
-    } // FIX ME: as Role
+    } as Role
 
     //CreateRole API
     this.roleService.createRole(newRole).subscribe(res =>{
