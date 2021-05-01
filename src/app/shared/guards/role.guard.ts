@@ -1,3 +1,12 @@
+/*
+============================================
+; Title: role.guard.ts
+; Author: Professor Krasso
+; Date: 29 April 2021
+; Modified By: Arlix Sorto
+; Description: Role Guard
+;===========================================
+*/
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
 import { Observable } from 'rxjs';

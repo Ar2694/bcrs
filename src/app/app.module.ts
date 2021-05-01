@@ -56,6 +56,7 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatSelectModule } from '@angular/material/select';
 import { ChartModule } from 'primeng/chart';
 import { RoleListComponent } from './pages/role-list/role-list.component';
+import { InvoiceSummaryDialogComponent } from './shared/invoice-summary-dialog/invoice-summary-dialog.component';
 
 
 
@@ -83,7 +84,8 @@ import { RoleListComponent } from './pages/role-list/role-list.component';
     InternalServerErrorComponent,
     RoleCreateComponent,
     RoleDetailsComponent,
-    RoleListComponent
+    RoleListComponent,
+    InvoiceSummaryDialogComponent
   ],
   imports: [
     BrowserModule,
