@@ -13,9 +13,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteRecordDialogComponent } from 'src/app/shared/delete-record-dialog/delete-record-dialog.component';
 import { RoleService } from 'src/app/shared/services/role.service';
-
-// When created go back and add
-// import { Role } from '../../shared/interfaces/role.interface';
+import { Role } from '../../shared/interfaces/role.interface';
 
 @Component({
   selector: 'app-role-list',
