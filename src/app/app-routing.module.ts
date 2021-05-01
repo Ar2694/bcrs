@@ -31,6 +31,8 @@ import { VerifySecurityQuestionsComponent } from './pages/verify-security-questi
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { InternalServerErrorComponent } from './pages/internal-server-error/internal-server-error.component';
 import { RoleListComponent } from './pages/role-list/role-list.component';
+import { RoleDetailsComponent } from './pages/role-details/role-details.component';
+import { RoleCreateComponent } from './pages/role-create/role-create.component';
 
 // These are the paths added to the routes array
 // Each of these path will take you to the designated component
@@ -78,6 +80,14 @@ const routes: Routes = [
       {
         path: 'roles',
         component: RoleListComponent
+      },
+      {
+        path: 'roles/:roleId',
+        component: RoleDetailsComponent
+      },
+      {
+        path: 'roles/create/new',
+        component: RoleCreateComponent
       }
     ],
     canActivate: [AuthGuard]
