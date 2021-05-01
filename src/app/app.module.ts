@@ -57,7 +57,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { ChartModule } from 'primeng/chart';
 import { RoleListComponent } from './pages/role-list/role-list.component';
 import { InvoiceSummaryDialogComponent } from './shared/invoice-summary-dialog/invoice-summary-dialog.component';
-
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -107,7 +108,9 @@ import { InvoiceSummaryDialogComponent } from './shared/invoice-summary-dialog/i
     MatStepperModule,
     MatListModule,
     MatSelectModule,
-    ChartModule
+    ChartModule,
+    MatCheckboxModule,
+    MatSnackBarModule
 
   ],
   providers: [

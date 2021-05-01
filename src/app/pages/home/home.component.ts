@@ -9,16 +9,17 @@
 */
 
 //These are files being imported from external files
-import { Route } from '@angular/compiler/src/core';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { CookieService } from 'ngx-cookie-service';
 import { Invoice } from 'src/app/shared/interfaces/invoice.interface';
 import { LineItem } from 'src/app/shared/interfaces/line-item.interface';
-import { ServiceRepairItem } from 'src/app/shared/interfaces/service-repair-item.interface';
+import { InvoiceSummaryDialogComponent } from 'src/app/shared/invoice-summary-dialog/invoice-summary-dialog.component';
 import { InvoiceService } from 'src/app/shared/services/invoice.service';
 import { ServiceRepairService } from 'src/app/shared/services/service-repair.service';
+import { ServiceRepairItem } from 'src/app/shared/interfaces/service-repair-item.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -33,10 +34,10 @@ export class HomeComponent implements OnInit {
   lineItems: LineItem[];
 
   constructor(private cookieService: CookieService, private fb: FormBuilder, private dialog: MatDialog,
-    private router: Route, private serviceRepairService: ServiceRepairService, private invoiceService: InvoiceService) {
+    private router: Router, private serviceRepairService: ServiceRepairService, private invoiceService: InvoiceService) {
 
     //Gets the username
-    this.username = this.cookieService.get('sessionuser')
+    this.username = this.cookieService.get('sessionuser');
 
     this.services = this.serviceRepairService.getServiceRepairItems();
 
