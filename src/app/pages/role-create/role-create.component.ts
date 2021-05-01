@@ -12,6 +12,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Role } from 'src/app/shared/interfaces/role.interface';
 import { RoleService } from 'src/app/shared/services/role.service';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-role-create',
@@ -22,7 +23,7 @@ export class RoleCreateComponent implements OnInit {
   form: FormGroup;
   
   //Constructor
-  constructor(private fb: FormBuilder, private router: Router, private roleService: RoleService) { }
+  constructor(private dialogRef: MatDialogRef<RoleCreateComponent>, private fb: FormBuilder, private router: Router, private roleService: RoleService) { }
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -43,6 +44,10 @@ export class RoleCreateComponent implements OnInit {
     }, err => {
       console.log(err);
     })
+  }
+
+  cancel(){
+    this.dialogRef.close();
   }
 
 }
