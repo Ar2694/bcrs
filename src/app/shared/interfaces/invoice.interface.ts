@@ -12,8 +12,8 @@ import { LineItem } from './line-item.interface';
 
 //Notifying any file that wants to use this , it needs to import it first
 export interface Invoice {
-    userName: string;
-    lineItems: LineItem[];
+    username: string;
+    lineItem: LineItem[];
     partsAmount: number;
     laborAmount: number;
     lineItemTotal: number;
