@@ -10,6 +10,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+//Role schema for user roles
 let roleSchema = new Schema({
     text: {type: String, unique: true},
     isDisabled: {type: Boolean, default: false}
