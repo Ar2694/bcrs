@@ -15,7 +15,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { CookieService } from 'ngx-cookie-service';
 import { Invoice } from 'src/app/shared/interfaces/invoice.interface';
 import { LineItem } from 'src/app/shared/interfaces/line-item.interface';
-import { InvoiceSummaryDialogComponent } from 'src/app/shared/invoice-summary-dialog/invoice-summary-dialog.component';
+import { InvoiceSummaryDialogComponent } from 'src/app/dialogs/invoice-summary-dialog/invoice-summary-dialog.component';
 import { InvoiceService } from 'src/app/shared/services/invoice.service';
 import { ServiceRepairService } from 'src/app/shared/services/service-repair.service';
 import { ServiceRepairItem } from 'src/app/shared/interfaces/service-repair-item.interface';
