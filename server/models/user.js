@@ -11,7 +11,7 @@
 // const fields linked over
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const UserRoleSchema = require('../schemas/selected-security-question');
+const UserRoleSchema = require('../schemas/user-role');
 const SelectedSecurityQuestionSchema = require('../schemas/selected-security-question');
 
 // user input fields below
