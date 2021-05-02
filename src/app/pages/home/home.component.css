@@ -14,3 +14,11 @@
     text-align: center;
     font-size: 14px;
   }
+
+  /*
+  Task container styling
+*/
+.task-container {
+  width: 50%;
+  margin: 0 auto;
+}
