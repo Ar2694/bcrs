@@ -130,7 +130,7 @@ router.put('/:roleId', async(req, res) => {
       if(err){
         console.log(err);
         const updatedRoleMongodbErrorResponse = new ErrorResponse('500', 'Internal server error', err);
-        res.status(500).send(updatedRoleMongodbErrorResponse);
+        res.status(500).send(updatedRoleMongodbErrorResponse.toObject());
       }
       //Otherwise set the new role and then save into the database.
       else{
@@ -149,7 +149,7 @@ router.put('/:roleId', async(req, res) => {
           //Otherwise send a base response with updated role object.
           else{
             console.log(updateRole);
-            const updatedRoleResponse = new BaseResponse('200', 'Query successful', updatedRole);
+            const updatedRoleResponse = new BaseResponse('200', 'Query successful', updateRole);
             res.json(updatedRoleResponse.toObject());
           }
         });
