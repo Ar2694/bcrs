@@ -164,7 +164,7 @@ router.put('/:id', async (req, res) => {
             email: req.body.email,
           });
 
-          // role that will be assigned to each user
+          // updated roles that can be assigned to users
           user.role.set({
             role: req.body.role
           })
@@ -177,7 +177,7 @@ router.put('/:id', async (req, res) => {
               res.status(500).send(saveUserMongodbErrorResponse.toObject());
             } else {
               console.log(savedUser);
-              const saveUserResponse = new BaseResponse(200, 'Query Successful', user);
+              const saveUserResponse = new BaseResponse(200, 'Query Successful', savedUser);
               res.json(saveUserResponse.toObject());
             }
           });
