@@ -48,11 +48,6 @@ const routes: Routes = [
         component: HomeComponent
       },
       {
-        path: 'purchases-by-service-graph',
-        component: PurchasesByServiceGraphComponent,
-        canActivate: [RoleGuard]
-      },
-      {
         path: 'about',
         component: AboutComponent
       },
@@ -95,7 +90,12 @@ const routes: Routes = [
       {
         path: 'roles/create/new',
         component: RoleCreateComponent
-      }
+      },
+      {
+        path: 'purchases-by-service-graph',
+        component: PurchasesByServiceGraphComponent,
+        canActivate: [RoleGuard]
+      },
     ],
     canActivate: [AuthGuard]
   },

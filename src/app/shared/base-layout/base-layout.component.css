@@ -26,6 +26,7 @@
   .navbar-link {
     font-size: 24px;
     font-weight: lighter;
+    cursor: pointer;
   }
 
   .main-content {

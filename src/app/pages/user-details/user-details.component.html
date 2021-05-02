@@ -16,7 +16,9 @@
 
           <mat-form-field>
             <mat-select [formControl]='form.controls["role"]' placeholder='Role'>
-              {{ roles.text }}
+              <mat-option *ngFor='let role of roles' [value]='role.text'>
+                {{ role.text }}
+              </mat-option>
             </mat-select>
           </mat-form-field>
 

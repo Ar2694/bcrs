@@ -12,6 +12,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Role } from 'src/app/shared/interfaces/role.interface';
 import { User } from 'src/app/shared/interfaces/user.interface';
 import { RoleService } from 'src/app/shared/services/role.service';
 import { UserService } from 'src/app/shared/services/user.service';
@@ -26,7 +27,7 @@ export class UserDetailsComponent implements OnInit {
   user: User;
   userId: string;
   form: FormGroup;
-  roles: any;
+  roles: Role[];
 
   constructor(private route: ActivatedRoute, private fb: FormBuilder,
               private router: Router, private userService: UserService,
@@ -40,7 +41,8 @@ export class UserDetailsComponent implements OnInit {
       /**
        * form containing user information
        */
-      this.user = res.data;
+      this.user = res['data'];
+      console.log(this.user);
       }, err => {
         console.log(err);
       }, () => {
@@ -58,7 +60,7 @@ export class UserDetailsComponent implements OnInit {
         }, err => {
           console.log(err);
         })
-      })
+      });
       }
 
   /**

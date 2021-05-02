@@ -18,9 +18,12 @@ import { RoleService } from '../services/role.service';
 })
 export class RoleGuard implements CanActivate {
   constructor(private router: Router, private cookiesService, private roleService: RoleService){}
-  
+
   //Determine if the user is admin otherwise navigate other users to home page.
-  canActivate(route: ActivatedRouteSnapshot,state: RouterStateSnapshot) {
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+    ) {
 
     return this.roleService.findUserRole(this.cookiesService.get('sessionuser')).pipe(map(res=>{
       console.log(res);
@@ -34,7 +37,7 @@ export class RoleGuard implements CanActivate {
         return false;
       }
     }));
- 
+
   }
-  
+
 }
