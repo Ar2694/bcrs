@@ -25,7 +25,7 @@ export class PurchasesByServiceGraphComponent implements OnInit {
 
   constructor(private invoiceService: InvoiceService) {
     // This function calls the purchase graph API
-    this.invoiceService.findPurchaseByServiceGraph().subscribe(res => {
+    this.invoiceService.findPurchasesByServiceGraph().subscribe(res => {
       // this will add the response data to the variable
       this.purchases = res ['data'];
 

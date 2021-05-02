@@ -21,26 +21,26 @@ export class InvoiceService {
 
   /**
    *
-   * @param userName 
-   * @param invoice 
+   * @param username
+   * @param invoice
    * @returns Post request to create a new invoice.
    */
-  createInvoice(userName: string, invoice: Invoice): Observable<any>{
-    return this.http.post('/api/invoices' + userName, {
-      userName: userName,
+  createInvoice(username: string, invoice: Invoice): Observable<any>{
+    return this.http.post('/api/invoices' + username, {
+      username: username,
       lineItem: invoice.lineItem,
       partsAmount: invoice.partsAmount,
-      laborAmount: invoice.laborAmount, 
+      laborAmount: invoice.laborAmount,
       lineItemTotal: invoice.lineItemTotal,
       total: invoice.total
     });
   }
 
 /**
-   * 
+   *
    * @returns Get request to retrieve all the invoices.
    */
-  findPurchaseByServiceGraph(){
+  findPurchasesByServiceGraph(){
     return this.http.get('/api/invoices/purchases-graph');
   }
 }
