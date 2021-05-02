@@ -60,9 +60,10 @@ export class PurchasesByServiceGraphComponent implements OnInit {
               '#6CDAE7'
             ],
             data: this.itemCount
-          }
-        ],
-      }
+          },
+        ]
+      };
+
       console.log('Data Object');
       console.log(this.data);
     })

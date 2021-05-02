@@ -13,6 +13,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ChartModule } from 'primeng/chart';
 
 //components and interceptors created
 import { AppComponent } from './app.component';
@@ -38,28 +42,24 @@ import { VerifySecurityQuestionsComponent } from './pages/verify-security-questi
 import { InternalServerErrorComponent } from './pages/internal-server-error/internal-server-error.component';
 import { RoleCreateComponent } from './pages/role-create/role-create.component';
 import { RoleDetailsComponent } from './pages/role-details/role-details.component';
+import { RoleListComponent } from './pages/role-list/role-list.component';
+import { InvoiceSummaryDialogComponent } from './dialogs/invoice-summary-dialog/invoice-summary-dialog.component';
+import { PurchasesByServiceGraphComponent } from './pages/purchases-by-service-graph/purchases-by-service-graph.component';
 
-import { FlexLayoutModule } from '@angular/flex-layout';
+//Material design
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
-import {MatTableModule} from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
 import { MatListModule } from '@angular/material/list';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatSelectModule } from '@angular/material/select';
-import { ChartModule } from 'primeng/chart';
-import { RoleListComponent } from './pages/role-list/role-list.component';
-import { InvoiceSummaryDialogComponent } from './dialogs/invoice-summary-dialog/invoice-summary-dialog.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { PurchasesByServiceGraphComponent } from './pages/purchases-by-service-graph/purchases-by-service-graph.component';
 
 
 @NgModule({
@@ -111,8 +111,7 @@ import { PurchasesByServiceGraphComponent } from './pages/purchases-by-service-g
     MatListModule,
     MatSelectModule,
     ChartModule,
-    MatCheckboxModule,
-    MatSnackBarModule
+    MatCheckboxModule
 
   ],
   providers: [

@@ -23,11 +23,11 @@ import { Role } from '../../shared/interfaces/role.interface';
 export class RoleListComponent implements OnInit {
 
   roles: Role[];
-  displayedColumns = ['role', 'functions']
+  displayedColumns = ['role', 'functions'];
 
   constructor(private dialog: MatDialog, private roleService: RoleService) {
     /**
-     * making a query to the database
+     *  finding roles
      */
     this.roleService.findAllRoles().subscribe(res => {
       this.roles = res['data'];
@@ -63,7 +63,7 @@ export class RoleListComponent implements OnInit {
       if (result === 'confirm') {
         this.roleService.deleteRole(roleId).subscribe(res => {
           console.log('Role Deleted')
-          this.roles = this.roles.filter(role =>role._id != roleId)
+          this.roles = this.roles.filter(role => role._id !== roleId)
         })
       }
     })

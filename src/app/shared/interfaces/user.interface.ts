@@ -8,6 +8,9 @@
 ;===========================================
 */
 
+import { Role } from "./role.interface";
+import { SecurityQuestion } from "./security-question.interface";
+
 // exports the values and have them as a string
 
 export interface User {
@@ -19,4 +22,6 @@ export interface User {
   phoneNumber: string;
   address: string;
   email: string;
+  role: Role;
+  sercurityQuestions: SecurityQuestion[];
 }

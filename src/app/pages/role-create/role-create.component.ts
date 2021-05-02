@@ -21,11 +21,11 @@ import { RoleService } from 'src/app/shared/services/role.service';
 })
 export class RoleCreateComponent implements OnInit {
   form: FormGroup;
-  
+
   //Constructor
   constructor( private fb: FormBuilder, private router: Router, private roleService: RoleService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.form = this.fb.group({
       text: [null, Validators.compose([Validators.required])]
     });
@@ -34,7 +34,7 @@ export class RoleCreateComponent implements OnInit {
 //Create a new role through the createRole API.
   create(){
     //Create new role object
-    const newRole ={ 
+    const newRole ={
       text: this.form.controls['text'].value
     } as Role
 
