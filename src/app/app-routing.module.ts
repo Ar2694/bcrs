@@ -33,6 +33,8 @@ import { InternalServerErrorComponent } from './pages/internal-server-error/inte
 import { RoleListComponent } from './pages/role-list/role-list.component';
 import { RoleDetailsComponent } from './pages/role-details/role-details.component';
 import { RoleCreateComponent } from './pages/role-create/role-create.component';
+import { PurchasesByServiceGraphComponent } from './pages/purchases-by-service-graph/purchases-by-service-graph.component';
+import { RoleGuard } from './shared/guards/role.guard';
 
 // These are the paths added to the routes array
 // Each of these path will take you to the designated component
@@ -44,6 +46,11 @@ const routes: Routes = [
       {
         path: '',
         component: HomeComponent
+      },
+      {
+        path: 'purchases-by-service-graph',
+        component: PurchasesByServiceGraphComponent,
+        canActivate: [RoleGuard]
       },
       {
         path: 'about',

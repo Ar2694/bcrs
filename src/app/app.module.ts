@@ -59,6 +59,7 @@ import { RoleListComponent } from './pages/role-list/role-list.component';
 import { InvoiceSummaryDialogComponent } from './dialogs/invoice-summary-dialog/invoice-summary-dialog.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { PurchasesByServiceGraphComponent } from './pages/purchases-by-service-graph/purchases-by-service-graph.component';
 
 
 @NgModule({
@@ -86,7 +87,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     RoleCreateComponent,
     RoleDetailsComponent,
     RoleListComponent,
-    InvoiceSummaryDialogComponent
+    InvoiceSummaryDialogComponent,
+    PurchasesByServiceGraphComponent
   ],
   imports: [
     BrowserModule,
