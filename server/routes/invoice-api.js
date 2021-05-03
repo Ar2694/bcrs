@@ -77,8 +77,8 @@ router.get('/purchases-graph', async(req, res) =>
         {
           '_id':
           {
-            'title': '$lineItem.title',
-            'price': '$lineItem.price'
+            'title': '$lineItems.title',
+            'price': '$lineItems.price'
           },
           'count':
           {

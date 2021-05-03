@@ -18,7 +18,6 @@ import { Invoice } from '../interfaces/invoice.interface';
 
 export class InvoiceService {
 
-
   constructor(private http: HttpClient) { }
 
   /**
