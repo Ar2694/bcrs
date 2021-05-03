@@ -1,24 +1,16 @@
 /*
   Styling for home page
 */
-.main-welcome {
-    margin-top: 30px;
-  }
-
   .title {
     text-align: center;
     font-weight: lighter;
   }
 
-  .subtitle {
-    text-align: center;
-    font-size: 14px;
+  .service-card {
+    width: 75%;
+    margin: 0 auto;
   }
 
-  /*
-  Task container styling
-*/
-.task-container {
-  width: 50%;
-  margin: 0 auto;
+.services-list {
+  height: 450px;
 }

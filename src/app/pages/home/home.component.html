@@ -1,79 +1,49 @@
-<div fxLayout="column" class="main-title">
+<div fxLayout="column"  fxLayoutAlign="center center" class="services-list">
+  <h1 class="title">Service Repair Form</h1>
 
-  <!-- Home Page Title-->
-  <div fxFlex>
-    <h1 class="title">
-      Service Repair Form
-    </h1>
+
+  <mat-card class="mat-elevation-z0 service-card">
+    <form #serviceRepairForm="ngForm" (ngSubmit)="submit(serviceRepairForm.value); serviceRepairForm.reset();">
+
+    <mat-card class="mat-elevation-z0" fxLayoutAlign='center center' fxLayout='row'>
+
+      <!-- service repair -->
+      <div fxLayout="column" style="margin-right: 10%;">
+        <h3 fxFlex>Services</h3>
+        <div ngModelGroup="checkGroup" *ngFor="let service of services">
+          <mat-checkbox name="{{service._id}}" ngModel>
+            {{service.title}} ({{service.price | currency}})
+          </mat-checkbox>
+          <br/>
+        </div>
+      </div>
+
+      <!-- parts & labor section -->
+      <div fxLayout="column">
+        <h3 fxFlex>Standard Fees</h3>
+        <mat-form-field fxFlex style="width: 300px !important;">
+          <input matInput name="parts"
+                 ngModel="0" placeholder="Parts"/>
+        </mat-form-field>
+
+        <mat-form-field fxFlex style="width: 300px !important;">
+          <input matInput name="labor"
+                 ngModel="0" placeholder="Labor @ 50.00/hr"/>
+        </mat-form-field>
+      </div>
+    </mat-card>
+
     <br>
-  </div>
-
-  <!-- Start of services and labor/parts container -->
-  <div fxFlex>
-     <div fxLayout='row' fxLayoutGap='15px' class="task-container">
-
-      <!-- start of services container-->
-       <div fxFlex>
-        <div fxLayout='row' class="service-card">
-      <mat-card class="mat-elevation-z0">
-        <mat-card-title>Services</mat-card-title>
-
-        <form #serviceRepairForm="ngForm" (ngSubmit)="submit(serviceRepairForm.value); serviceRepairForm.reset();">
-          <mat-card-content>
-            <!-- service repair -->
-            <div fxLayout="column">
-
-              <div ngModelGroup="checkGroup" *ngFor="let service of services">
-                <mat-checkbox name="{{service._id}}" ngModel>
-                  {{service.title}} ({{service.price | currency}})
-                </mat-checkbox>
-                <br/>
-              </div>
-            </div>
-          </mat-card-content>
-        </form>
-      </mat-card>
-        </div>
-      </div>
-
-      <!-- start of labor/parts container-->
-      <div fxFlex>
-        <div fxLayout='row' class="service-card">
-          <mat-card class="mat-elevation-z0">
-                <mat-card-title>Standard Fees</mat-card-title>
-
-                <form>
-                  <mat-card-content fxFlex fxLayout='column'>
-                    <mat-form-field fxFlex style="width: 300px !important;">
-                        <input matInput
-                              name="parts"
-                              ngModel="0"
-                              placeholder="Parts"/>
-                      </mat-form-field>
-
-                      <mat-form-field fxFlex style="width: 300px !important;">
-                        <input matInput
-                              name="labor"
-                              ngModel="0"
-                              placeholder="Labor @ 50.00/hr"/>
-                      </mat-form-field>
-                  </mat-card-content>
-
-                </form>
-          </mat-card>
-        </div>
-        </div>
-
-        </div>
-      </div>
-  <!-- end of services and labor/parts container-->
-
-
     <!-- form actions -->
-<div fxFlex>
-  <mat-card-actions align='end'>
-    <button mat-raised-button type="reset" color="primary" routerLink="/">Cancel</button>
-    <button mat-raised-button type="submit" color="accent">Submit</button>
-  </mat-card-actions>
+<div fxLayoutAlign='center center'>
+      <mat-card-actions align="end"  style="margin-left: 10%;">
+      <button mat-raised-button type="reset" color="primary" routerLink="/">Cancel</button>
+      <button mat-raised-button type="submit" color="accent">Submit</button>
+    </mat-card-actions>
+</div>
+
+
+  </form>
+</mat-card>
 </div>
 

@@ -35,6 +35,7 @@ import { RoleDetailsComponent } from './pages/role-details/role-details.componen
 import { RoleCreateComponent } from './pages/role-create/role-create.component';
 import { PurchasesByServiceGraphComponent } from './pages/purchases-by-service-graph/purchases-by-service-graph.component';
 import { RoleGuard } from './shared/guards/role.guard';
+import { InvoiceSummaryDialogComponent } from './dialogs/invoice-summary-dialog/invoice-summary-dialog.component';
 
 // These are the paths added to the routes array
 // Each of these path will take you to the designated component
@@ -90,6 +91,10 @@ const routes: Routes = [
       {
         path: 'roles/create/new',
         component: RoleCreateComponent
+      },
+      {
+        path: 'invoice',
+        component: InvoiceSummaryDialogComponent
       },
       {
         path: 'purchases-by-service-graph',
