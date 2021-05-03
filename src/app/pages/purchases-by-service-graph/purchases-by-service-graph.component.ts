@@ -25,11 +25,7 @@ export class PurchasesByServiceGraphComponent implements OnInit {
   labels = [];
 
   constructor(private invoiceService: InvoiceService) {
-    /**
-     *
-     *
-     *
- *     //this function calls the purchase graph API
+  //this function calls the purchase graph API
     this.invoiceService.findPurchasesByServiceGraph().subscribe(res => {
 
       //this will add the response data to the variable
@@ -73,9 +69,6 @@ export class PurchasesByServiceGraphComponent implements OnInit {
       console.log('Data Object');
       console.log(this.data);
     })
-*
-  *
- */
   }
 
   ngOnInit(): void {
