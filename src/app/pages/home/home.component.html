@@ -11,7 +11,7 @@
       <div fxLayout="column" style="margin-right: 10%;">
         <h3 fxFlex>Services</h3>
         <div ngModelGroup="checkGroup" *ngFor="let service of services">
-          <mat-checkbox name="{{service._id}}" ngModel>
+          <mat-checkbox name="{{service.id}}" ngModel>
             {{service.title}} ({{service.price | currency}})
           </mat-checkbox>
           <br/>

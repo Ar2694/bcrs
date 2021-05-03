@@ -48,6 +48,7 @@ export class HomeComponent implements OnInit {
       *
       */
   ngOnInit() {
+    
     this.form = this.fb.group({
       parts: [null, Validators.compose([Validators.required])],
       labor: [null, Validators.compose([Validators.required])],
@@ -61,6 +62,7 @@ export class HomeComponent implements OnInit {
    *
    */
   submit(form) {
+    console.log("form submitted!");
     console.log(form);
 
     const selectedServiceIds = [];
