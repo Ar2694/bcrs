@@ -32,7 +32,7 @@ router.post('/:username', async(req, res)=>{
             lineItemTotal: req.body.lineItemTotal,
             total: req.body.total
         }
-        console.log("newInvoices");
+        console.log("new Invoices");
         console.log(newInvoice);
         //Create new invoice from the selected services and store it in the database.
         Invoice.create(newInvoice, function(err, invoice){
