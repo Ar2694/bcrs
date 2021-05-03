@@ -48,7 +48,7 @@ export class HomeComponent implements OnInit {
       *
       */
   ngOnInit() {
-    
+
     this.form = this.fb.group({
       parts: [null, Validators.compose([Validators.required])],
       labor: [null, Validators.compose([Validators.required])],
@@ -102,7 +102,7 @@ export class HomeComponent implements OnInit {
 
     const invoice = {
       username: this.username,
-      lineItem: this.lineItems,
+      lineItems: this.lineItems,
       partsAmount: partsAmount,
       laborAmount: laborAmount,
       lineItemTotal: lineItemTotal,

@@ -17,7 +17,7 @@ const Schema = mongoose.Schema;
  */
 const invoiceSchema = new Schema({
   username: { type: String },
-  lineItem: [LineItemSchema], // array of line items - nested
+  lineItems: [LineItemSchema], // array of line items - nested
   partsAmount: { type: Number },
   laborAmount: { type: Number },
   lineItemTotal: { type: Number },
