@@ -66,7 +66,7 @@ app.use('/api/security-questions', SecurityQuestionAPI);
 app.use('/api/users', UserAPI);
 app.use('/api/session', SessionAPI);
 app.use('/api/roles', RolesAPI);
-app.use('/api/invoice', InvoicesAPI);
+app.use('/api/invoices', InvoicesAPI);
 
 /**
  * Create and start server
