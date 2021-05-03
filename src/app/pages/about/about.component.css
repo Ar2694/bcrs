@@ -3,19 +3,32 @@
   icon, ad text
 */
 
-.about{
-    width: 80%;
-    display: inline-block;
-}
-.about p{
-    font-size: 16px;
-    text-indent: 40px;
-}
-.icon-container{
+.about-icon{
     width: 20%;
-    display: inline-block;
+    display: block;
+    float: left;
 }
-.icon-container .mat-icon{
+.about-icon .mat-icon{
 font-size: 140px;
-
 }
+
+.about-text {
+  text-align: justify;
+  line-height: 1.8em;
+}
+
+/*
+  For screen smaller than 750px
+*/
+@media only screen and (max-width: 750px) {
+  .about-icon {
+    width: 100%;
+  }
+  .about-icon .mat-icon {
+    font-size: 200px;
+  }
+  .about-text {
+    margin-bottom: 50px;
+  }
+}
+

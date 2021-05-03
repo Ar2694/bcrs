@@ -3,7 +3,7 @@
 ; Title:  role.create.component.html
 ; Author: Professor Krasso
 ; Date:   17 April 2021
-; Modified by: Douglas Jenkins
+; Modified by: Douglas Jenkins, Karina Alvarez
 ; Description: Purchase by service graph
 ;===========================================
 */
@@ -42,24 +42,25 @@ export class PurchasesByServiceGraphComponent implements OnInit {
         labels: this.labels,
         datasets: [
           //graph objects
+          // colors where changed to represent our team
           {
             backgroundColor: [
-              '#ED0A3F',
-              '#FF8833',
-              '#5FA777',
-              '#0066CC',
-              '#683FA0',
-              '#AF593E',
-              '#6CDAE7'
+              '#0e1a40',
+              '#795548',
+              '#1A237E',
+              '#946b2d',
+              '#222f5b',
+              '#5d5d5d',
+              '#000000',
             ],
             hoverBackgroundColor: [
-              '#ED0A3F',
-              '#FF8833',
-              '#5FA777',
-              '#0066CC',
-              '#683FA0',
-              '#AF593E',
-              '#6CDAE7'
+              '#0e1a40',
+              '#795548',
+              '#1A237E',
+              '#946b2d',
+              '#222f5b',
+              '#5d5d5d',
+              '#000000',
             ],
             data: this.itemCount
           }
