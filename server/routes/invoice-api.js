@@ -69,7 +69,7 @@ router.get('/purchases-graph', async(req, res) =>
     Invoice.aggregate ([
       // unwind un-nest objects so you can you can get a total count of each user
       {
-        $unwind: '$lineItem'
+        $unwind: '$lineItems'
       },
       {
       // list the group the and separates them from title and price
