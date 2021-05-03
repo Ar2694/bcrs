@@ -17,29 +17,35 @@ import { InvoiceService } from 'src/app/shared/services/invoice.service';
   styleUrls: ['./purchases-by-service-graph.component.css']
 })
 export class PurchasesByServiceGraphComponent implements OnInit {
-  // calls for these values to be filled
+
+  //calls for these values to be filled
   purchases: any;
   data: any;
   itemCount = [];
   labels = [];
 
   constructor(private invoiceService: InvoiceService) {
-    // This function calls the purchase graph API
+    /**
+     *
+     *
+     *
+ *     //this function calls the purchase graph API
     this.invoiceService.findPurchasesByServiceGraph().subscribe(res => {
-      // this will add the response data to the variable
-      this.purchases = res ['data'];
 
-      //loops over the purchases and divides out the itemCount and services
+      //this will add the response data to the variable
+      this.purchases = res['data'];
+
+      //loos over the purchases and divides out the itemCount and services
       for (const item of this.purchases) {
         this.labels.push(item._id.title);
         this.itemCount.push(item.count);
       }
 
-      // this builds the object for the prime bar graph
-      this.data = {
+      //this builds the object for the prime bar graph
+       this.data = {
         labels: this.labels,
         datasets: [
-          // graph objects
+          //graph objects
           {
             backgroundColor: [
               '#ED0A3F',
@@ -67,8 +73,10 @@ export class PurchasesByServiceGraphComponent implements OnInit {
       console.log('Data Object');
       console.log(this.data);
     })
-
-  };
+*
+  *
+ */
+  }
 
   ngOnInit(): void {
   }

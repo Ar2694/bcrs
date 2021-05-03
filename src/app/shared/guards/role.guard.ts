@@ -8,8 +8,8 @@
 ;===========================================
 */
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { map } from 'rxjs/operators';
 import { RoleService } from '../services/role.service';
 
@@ -17,7 +17,7 @@ import { RoleService } from '../services/role.service';
   providedIn: 'root'
 })
 export class RoleGuard implements CanActivate {
-  constructor(private router: Router, private cookiesService, private roleService: RoleService){}
+  constructor(private router: Router, private cookiesService: CookieService, private roleService: RoleService){}
 
   //Determine if the user is admin otherwise navigate other users to home page.
   canActivate(
