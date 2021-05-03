@@ -76,6 +76,6 @@ export class RoleService {
    * @returns an observable of any
    */
   findUserRole(username: string): Observable<any> {
-    return this.http.get(`/api/roles${username}/role`)
+    return this.http.get(`/api/users/${username}/role`)
   }
 }
