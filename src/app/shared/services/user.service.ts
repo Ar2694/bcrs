@@ -69,6 +69,7 @@ export class UserService {
       lastname: user.lastname,
       phoneNumber: user.phoneNumber,
       address: user.address,
+      role: user.role,
       email: user.email
     })
   }
