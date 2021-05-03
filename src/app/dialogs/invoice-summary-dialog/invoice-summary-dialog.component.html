@@ -11,7 +11,7 @@
 -->
 <h2 style="text-align: center;" mat-dialog-title>{{invoice.username}} please confirm your order</h2>
 <!--mat dialog content start-->
-<div mat-dialog-content>
+<div mat-dialog-content class="invoice-container">
     <h3>Order date: {{ invoice.orderDate | date }}</h3>
     <mat-divider></mat-divider>
 
@@ -27,7 +27,6 @@
         </mat-list>
     </div>
      <!--Loop ends-->
-</div>
 <!--mat dialog content end-->
 <mat-divider></mat-divider>
 
@@ -63,3 +62,4 @@
     <button mat-raised-button matDialogClose="confirm" color="accent" cdkFocusInitial>Confirm Order</button>
 </div>
 <!--Mat dialog actions end-->
+</div>

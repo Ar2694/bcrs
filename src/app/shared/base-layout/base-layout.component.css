@@ -51,6 +51,10 @@
     letter-spacing: 3px;
   }
 
+  .footer-text {
+    margin: 0 auto;
+  }
+
   .bu-link {
     text-decoration: none;
     color: white;
@@ -71,7 +75,7 @@
 .title {
   text-align: center;
   padding-top: 30px;
-  font-size: 5em;
+  font-size: 4em;
 }
 
 

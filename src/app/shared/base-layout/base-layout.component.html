@@ -6,7 +6,9 @@
       <!-- navbar container -->
       <div class="navbar-container">
         <!-- logo -->
-        <button class="logo" routerLink="/" mat-button>BCRS</button>
+        <button class="logo" routerLink="/" mat-button>
+          <img width="45%" src="../assets/BCRS.png">
+        </button>
 
         <!-- home aboutUs and ContactUd links-->
         <button class="navbar-link" mat-button routerLink="/about">About Us</button>
@@ -26,7 +28,6 @@
           </div>
         </div>
       </div>
-
     </mat-toolbar>
   </nav>
 
@@ -52,11 +53,11 @@
   </div>
 
   <!-- footer -->
-  <div fxFlex>
+  <div fxFlex='5'>
     <footer class="footer">
       <mat-toolbar class="footer-content"  color='primary'>
-        <p>
-          &copy; {{year | date: 'yyyy'}} - Team RavenClaw<br>
+        <p class="footer-text">
+          &copy; {{year | date: 'yyyy'}} - Team RavenClaw -
            <a href="https://www.bellevue.edu/" class="bu-link" target="_blank">Bellevue University</a>
         </p>
       </mat-toolbar>
