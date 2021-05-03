@@ -60,7 +60,7 @@ export class PurchasesByServiceGraphComponent implements OnInit {
               '#6CDAE7'
             ],
             data: this.itemCount
-          },
+          }
         ]
       };
 

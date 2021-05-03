@@ -22,9 +22,8 @@ export class RoleGuard implements CanActivate {
   //Determine if the user is admin otherwise navigate other users to home page.
   canActivate(
     route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-    ) {
-
+    state: RouterStateSnapshot) {
+      //find user role from database
     return this.roleService.findUserRole(this.cookiesService.get('sessionuser')).pipe(map(res=>{
       console.log(res);
       //Check if user is admin
