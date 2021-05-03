@@ -23,10 +23,10 @@ router.post('/:username', async(req, res)=>{
 
     try{
         //Create new invoice object.
-        const userName = req.params.username;
+        const username = req.params.username;
         const newInvoice = {
-            username: userName,
-            lineItems: req.body.lineItems,
+            username: username,
+            lineItem: req.body.lineItem,
             partsAmount: req.body.partsAmount,
             laborAmount: req.body.laborAmount,
             lineItemTotal: req.body.lineItemTotal,
@@ -68,7 +68,7 @@ router.get('/purchases-graph', async(req, res) =>
     Invoice.aggregate ([
       // unwind un-nest objects so you can you can get a total count of each user
       {
-        $unwind: '$lineItems'
+        $unwind: '$lineItem'
       },
       {
       // list the group the and separates them from title and price
@@ -76,8 +76,8 @@ router.get('/purchases-graph', async(req, res) =>
         {
           '_id':
           {
-            'title': '$lineItems.title',
-            'price': '$lineItems.price'
+            'title': '$lineItem.title',
+            'price': '$lineItem.price'
           },
           'count':
           {
