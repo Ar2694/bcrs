@@ -14,7 +14,7 @@
     <mat-card-title>Create User</mat-card-title>
     <br>
 
-    <form [formGroup]="form" (ngSubmit)="createUser()" #userForm>
+    <form [formGroup]="form"  #userForm>
       <mat-card-content>
         <div fxLayout="column" fxLayoutGap="10px">
           <!--- The input information that needs to be filled out -->
@@ -53,7 +53,7 @@
       <br>
       <mat-card-actions align="end">
         <button mat-raised-button (click)="cancel()" color="warn">Cancel</button>
-        <button type="submit" mat-raised-button color="accent">Submit</button>
+        <button type="submit" mat-raised-button (click)="createUser()" color="accent">Submit</button>
       </mat-card-actions>
     </form>
   </mat-card>
