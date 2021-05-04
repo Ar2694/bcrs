@@ -56,7 +56,7 @@ export class RoleService {
    * @returns an observably of type any
    */
   updateRole(roleId: string, role: Role): Observable<any> {
-    return this.http.post(`/api/roles/${roleId}`, {
+    return this.http.put(`/api/roles/${roleId}`, {
       text: role.text
     })
   }
