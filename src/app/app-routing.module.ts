@@ -39,6 +39,7 @@ import { PurchasesByServiceGraphComponent } from './pages/purchases-by-service-g
 
 // These are the paths added to the routes array
 // Each of these path will take you to the designated component
+//RoleGuard only allows admins to see page
 const routes: Routes = [
   {
     path: '',
