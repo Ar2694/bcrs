@@ -1,0 +1,34 @@
+/*
+  Styling for the user-list component
+*/
+.container {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.user-list {
+  min-width: 85%;
+  margin-bottom: 20%;
+}
+
+.mat-raised-button {
+  margin-top: 10px;
+}
+
+.mat-cell {
+  padding-right: 30px;
+}
+
+.mat-header-cell {
+  padding-right: 30px;
+}
+
+/*
+  Style for smaller devices
+*/
+@media only screen and (max-width: 750px) {
+  .user-list {
+    margin-bottom: 15%;
+  }
+}
+

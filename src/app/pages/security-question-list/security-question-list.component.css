@@ -1,0 +1,14 @@
+/*
+  Main container styling
+*/
+.SQ-list-container {
+  width: 50%;
+  margin: 0 auto;
+  padding-bottom: 15%;
+}
+
+@media only screen and (max-width: 750px) {
+  .SQ-list-container {
+    width: 80%;
+  }
+}

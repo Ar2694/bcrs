@@ -1,8 +1,49 @@
-<div fxLayout="column" class="main-welcome">
-  <h1 class="title">
-    Welcome to WEB 450's - Bob's Computer Repair Shop <br />
-    <span class="subtitle">
-      Pay close attention to the requirements, double and triple check the files for code attribution, and do not wait unitl the last minute to begin working on each item.
-    </span>
-  </h1>
+<div fxLayout="column"  fxLayoutAlign="center center" class="services-list">
+  <h1 class="title">Service Repair Form</h1>
+
+
+  <mat-card class="mat-elevation-z0 service-card">
+    <form #serviceRepairForm="ngForm" (ngSubmit)="submit(serviceRepairForm.value); serviceRepairForm.reset();">
+
+    <mat-card class="mat-elevation-z0" fxLayoutAlign='center center' fxLayout='row'>
+
+      <!-- service repair -->
+      <div fxLayout="column" style="margin-right: 10%;">
+        <h3 fxFlex>Services</h3>
+        <div ngModelGroup="checkGroup" *ngFor="let service of services">
+          <mat-checkbox name="{{service.id}}" ngModel>
+            {{service.title}} ({{service.price | currency}})
+          </mat-checkbox>
+          <br/>
+        </div>
+      </div>
+
+      <!-- parts & labor section -->
+      <div fxLayout="column">
+        <h3 fxFlex>Standard Fees</h3>
+        <mat-form-field fxFlex style="width: 300px !important;">
+          <input matInput name="parts"
+                 ngModel="0" placeholder="Parts"/>
+        </mat-form-field>
+
+        <mat-form-field fxFlex style="width: 300px !important;">
+          <input matInput name="labor"
+                 ngModel="0" placeholder="Labor @ 50.00/hr"/>
+        </mat-form-field>
+      </div>
+    </mat-card>
+
+    <br>
+    <!-- form actions -->
+<div fxLayoutAlign='center center'>
+      <mat-card-actions align="end"  style="margin-left: 10%;">
+      <button mat-raised-button type="reset" color="primary" routerLink="/">Cancel</button>
+      <button mat-raised-button type="submit" color="accent">Submit</button>
+    </mat-card-actions>
 </div>
+
+
+  </form>
+</mat-card>
+</div>
+

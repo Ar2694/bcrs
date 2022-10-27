@@ -1,0 +1,48 @@
+/*
+    The bellow style will help the login card
+    stay in the center of the website
+    as well as to provide a error message
+    in red, when necessary. Text has been align
+    to be in center of the mat card
+*/
+.signin-container {
+  width: 35%;
+  margin: 0 auto;
+  margin-top: 10%;
+}
+
+.register-link{
+  cursor: pointer;
+  color: #0D47A1;
+}
+
+.card-subtitle{
+  text-align: center;
+  font-size: 80%;
+}
+
+.forgot-password-link{
+  float: right;
+  cursor: pointer;
+}
+
+.forgot-password-link:hover,
+.register-link:hover {
+  text-decoration: underline;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+button {
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+}
+
+@media only screen and (max-width: 750px) {
+  .signin-container {
+    width: 60%;
+  }
+}

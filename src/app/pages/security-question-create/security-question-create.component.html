@@ -1,0 +1,38 @@
+<!--
+/*
+============================================
+; Title:  base.response.js
+; Author: Professor Krasso
+; Date:   17 April 2021
+; Modified by: Douglas Jenkins
+; Description: create security question page
+;===========================================
+*/
+-->
+
+<div fxLayout="column">
+  <mat-card class="mat-elevation-z8" class="SQ-create-container">
+    <mat-card-title>Create Security Question</mat-card-title>
+
+    <br>
+
+    <form [formGroup]="form" (ngSubmit)="create()" #securityQuestionForm>
+
+      <mat-card-content>
+        <div fxLayout="column" fxLayoutGap="10px">
+          <mat-form-field>
+            <input type="text" matInput [formControl]= "form.controls['text']" placeholder="Question text" (keydown.enter)="create()">
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+
+      <!-- Deletes and Submits the question creation -->
+      <br>
+      <mat-card-actions align="end">
+        <button mat-raised-button (click)="cancel()" color="warn">Cancel</button>
+        <button type="submit" mat-raised-button color="accent">Submit</button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+
+</div>

@@ -1,40 +1,142 @@
+/*
+* Page Container
+*/
+.page-container{
+  position: relative;
+  min-height: 100vh;
+}
+
+/*
+* Styling for navigation bar
+*/
 .logo {
     margin-left: 75px;
     font-size: 24px;
-    font-weight: lighter;;
+    font-weight: lighter;
   }
-  
+
   .navbar-container {
     padding: 5px;
   }
-  
+
+  .navigation-bar {
+    padding: 50px;
+  }
+
   .navbar-link {
     font-size: 24px;
     font-weight: lighter;
+    cursor: pointer;
   }
-  
+
   .main-content {
-    padding-left: 30px;
+    padding-bottom: 15%;
   }
-  
+
+  /*
+  * Styling for page's footer
+  */
   .footer {
     bottom: 0;
-    position: absolute;
     width: 100%;
-  }
-  
+    position: fixed;
+    left: 0;
+    text-align: center;
+    }
+
   .footer-content {
     font-size: 16px;
     font-weight: lighter;
     padding-left: 100px;
     letter-spacing: 3px;
   }
-  
+
+  .footer-text {
+    margin: 0 auto;
+  }
+
   .bu-link {
     text-decoration: none;
+    color: white;
   }
-  
+
   .bu-link:hover {
     text-decoration: underline;
   }
-  
+
+    /* This will affect padding, width, and margin of the main container*/
+.main-container {
+  padding-top: 25px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+/* This will centered the title on the app-component.html*/
+.title {
+  text-align: center;
+  padding-top: 30px;
+  font-size: 4em;
+}
+
+
+  /*
+  * Styling for dropdown menu
+  */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    right: 0;
+  }
+
+  .dropdown-content li {
+    color: black;
+    text-decoration: none;
+    font-weight: lighter;
+    font-size: small;
+    list-style-type:none;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  .dropdown-content li:hover {
+    background-color: #ddd;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  .icon:hover {
+    cursor: pointer;
+  }
+  /*
+    Making navbar responsive in smaller screens
+  */
+  @media only screen and (max-width: 780px) {
+    .logo {
+      margin-left: 10px;
+      font-size: 20px;
+    }
+    .navigation-bar {
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+
+    .navbar-link {
+      font-size: 16px;
+    }
+
+    .title {
+      padding-top: 20px;
+      font-size: 2.5em;
+    }
+  }
