@@ -1,0 +1,21 @@
+/*
+* Main container styling
+*/
+.main-container {
+  margin-top: 5%;
+}
+
+/*
+* Registration form container styling
+*/
+.registration-form {
+  width: 65%;
+  margin-left: 18%;
+  margin-top: 2%;
+}
+
+.password-requirements {
+  color: red;
+  font-size: 10px;
+  margin-left: 2%;
+}

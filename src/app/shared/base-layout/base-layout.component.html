@@ -1,33 +1,64 @@
-<div fxLayout="column">
+<div fxLayout="column" class="page-container">
 
   <!-- navigation -->
   <nav fxFlex>
-    <mat-toolbar>
+    <mat-toolbar class="navigation-bar" color='primary'>
       <!-- navbar container -->
       <div class="navbar-container">
         <!-- logo -->
-        <button class="logo" routerLink="/" mat-button>BCRS</button>
+        <button class="logo" routerLink="/" mat-button>
+          <img width="45%" src="../assets/BCRS.png">
+        </button>
 
-        <button class="navbar-link" routerLink="/" mat-button>Home</button>
-        <button class="navbar-link" mat-button>About</button>
+        <!-- home aboutUs and ContactUd links-->
+        <button class="navbar-link" mat-button routerLink="/about">About Us</button>
+        <button class="navbar-link" mat-button routerLink="/contact">Contact Us</button>
       </div>
 
+      <!-- navigation to the right of the website - signOut and Icon with a dropdown menu-->
+      <div fxFlex fxLayoutAlign="end center">
+        <div class="dropdown">
+            <mat-icon class="icon">person_outline</mat-icon>
+          <div class="dropdown-content">
+            <li class="navbar-link" mat-button routerLink='/users' *ngIf="userRole === 'admin'">User Configuration</li>
+            <li class="navbar-link" mat-button routerLink='/security-questions' *ngIf="userRole === 'admin'">Security Questions Configuration</li>
+            <li class="navbar-link" mat-button routerLink='/purchases-by-service-graph'*ngIf="userRole === 'admin'">Purchases by Service Graph</li>
+            <li class="navbar-link" mat-button routerLink='/roles' *ngIf="userRole === 'admin'">Role Configuration</li>
+            <li class="navbar-link" mat-button (click)="signOut()">Sign Out</li>
+          </div>
+        </div>
+      </div>
     </mat-toolbar>
   </nav>
 
-  <!-- main content -->
-  <div fxFlex>
-    <main class="main-content" fxFlex="100%;">
-      <router-outlet></router-outlet>
-    </main>
+  <div fxLayout>
+    <div fxFlex>
+
+        <!-- this will tell Angular flex-layout that this is a flex element under a flex-row-->
+      <mat-card class="main-container mat-elevation-z0" >
+        <mat-card-title class="title">{{ assignment }}</mat-card-title>
+
+        <br>
+        <br>
+
+        <!--
+          Router outer placeholder where information from each specific page will be shown
+          depending on what user clicks (about, contact, book-list)
+        -->
+        <mat-card-content>
+          <router-outlet></router-outlet>
+        </mat-card-content>
+      </mat-card>
+    </div>
   </div>
 
   <!-- footer -->
-  <div fxFlex>
+  <div fxFlex='5'>
     <footer class="footer">
-      <mat-toolbar class="footer-content">
-        <p>
-          &copy; {{year | date: 'yyyy'}} - Bob's Computer Repair Shop - <a href="https://www.bellevue.edu/" class="bu-link" target="_blank">Bellevue University</a>
+      <mat-toolbar class="footer-content"  color='primary'>
+        <p class="footer-text">
+          &copy; {{year | date: 'yyyy'}} - Team House Ravenclaw -
+           <a href="https://www.bellevue.edu/" class="bu-link" target="_blank">Bellevue University</a>
         </p>
       </mat-toolbar>
     </footer>

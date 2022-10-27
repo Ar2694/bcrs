@@ -1,0 +1,53 @@
+<div fxLayout='row wrap' fxLayoutAlign='center start' class="signin-container">
+  <div fxFlex>
+    <mat-card class='mat-card-top'>
+      <br>
+      <!-- Employee sign in title -->
+      <mat-card-title style="text-align: center; font-size: 280%; font-weight: lighter;">
+        Sign-In
+      </mat-card-title>
+
+      <br>
+      <br>
+
+      <!-- Create an account link that will re-direct user to a new component -->
+      <mat-card-subtitle style="text-align: center; font-weight: lighter;">
+        <p>Don't have an account? <span><a routerLink='/session/register' class="register-link">Click here</a> to register</span></p>
+      </mat-card-subtitle>
+
+      <mat-card-subtitle class="card-subtitle">
+        You must enter a valid username and password to proceed
+      </mat-card-subtitle>
+
+      <mat-card-content>
+        <!-- if an error occurs the bellow message will be displayed-->
+        <small style="color: #df546a;" *ngIf='errorMessage'> {{ errorMessage }}<br></small>
+
+        <mat-card class="mat-elevation-z0">
+          <form [formGroup]='signinForm' (ngSubmit)='signin(); signinForm.reset()' #loginForm='ngForm'>
+
+            <!-- Username and password input fields -->
+            <mat-card-content fxLayout='column' fxLayoutGap='10px'>
+              <mat-form-field >
+                <input type="text" matInput fxFlex [formControl]="signinForm.controls['username']" placeholder='Username' />
+              </mat-form-field>
+              <mat-form-field >
+                <input type="password" matInput fxFlex [formControl]="signinForm.controls['password']" placeholder='Password' />
+              </mat-form-field>
+            </mat-card-content>
+
+            <mat-card-actions>
+              <button type="signin" fxFlex mat-raised-button color='accent'>Sign-In</button>
+            </mat-card-actions>
+
+
+            <!-- Forgot password will take you to another component to change pw-->
+            <a class='forgot-password-link' routerLink='/session/forgot'>
+              Forgot password?
+            </a>
+          </form>
+        </mat-card>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

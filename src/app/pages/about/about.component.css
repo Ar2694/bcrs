@@ -1,0 +1,34 @@
+/*
+  About us page styling for main container,
+  icon, ad text
+*/
+
+.about-icon{
+    width: 20%;
+    display: block;
+    float: left;
+}
+.about-icon .mat-icon{
+font-size: 140px;
+}
+
+.about-text {
+  text-align: justify;
+  line-height: 1.8em;
+}
+
+/*
+  For screen smaller than 750px
+*/
+@media only screen and (max-width: 750px) {
+  .about-icon {
+    width: 100%;
+  }
+  .about-icon .mat-icon {
+    font-size: 200px;
+  }
+  .about-text {
+    margin-bottom: 50px;
+  }
+}
+

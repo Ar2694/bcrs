@@ -1,0 +1,29 @@
+/*
+============================================
+; Title:  Contact
+; Author: Professor Krasso
+; Date:   23 April 2021
+; Modified by: Douglas Jenkins
+; Description: contact us page
+;===========================================
+*/
+
+/*
+  Contact us styling
+*/
+.contactUs{
+  margin-top: 3em;
+  margin-left: 20%;
+}
+
+.num, .add, .mail {
+  padding: 10px;
+}
+
+.mail a{
+  text-decoration: none;
+}
+ mat-card-title{
+   font-size: small;
+ }
+
