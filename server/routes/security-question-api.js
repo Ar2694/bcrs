@@ -97,8 +97,10 @@ router.get('/:id', async(req, res) => {
  *  CreateSecurityQuestion API
  */
 router.post('/', async(req, res) => {
+
   try
   {
+    console.log(req.body, "test post")
     // allows for the question to be created and posted on the body
 
     let newSecurityQuestion = {
@@ -111,7 +113,7 @@ router.post('/', async(req, res) => {
       if (err)
       {
         console.log(err);
-        const createSecurityQuestionMongodbErrorResponse = new ErrorResponse(500, 'Internal Server Error', err);
+        const createSecurityQuestionMongodbErrorResponse = new ErrorResponse(500, 'Internal Server Erroring', err);
         res.status(500).send(createSecurityQuestionMongodbErrorResponse.toObject());
       }
       else

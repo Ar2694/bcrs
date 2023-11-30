@@ -43,7 +43,7 @@ app.use('/', express.static(path.join(__dirname, '../dist/bcrs')));
 const port = process.env.PORT || 3000; // server port
 
 //mongo db connection with username and password to access database
-const conn = 'mongodb+srv://bcrsAdmin:bcrsPassword@buwebdev-cluster-1.z53kv.mongodb.net/bcrs?retryWrites=true&w=majority';
+const conn = 'mongodb+srv://admin:test@cluster0.huc6fck.mongodb.net/';
 
 /**
  * Database connection
